@@ -1,0 +1,401 @@
+
+
+
+<!doctype html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Chấm công (QR + PIN)</title>
+    <style>
+        :root {
+            --bg: #ffffff;
+            --page: #ffffff;
+            --text: #0f172a;
+            --muted: #475569;
+            --border: #e2e8f0;
+            --card: #ffffff;
+            --ok: #16a34a;
+            --bad: #dc2626;
+            --primary: #16a34a;
+            --danger: #dc2626;
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            font-family: system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+            background: var(--page);
+            color: var(--text);
+        }
+
+        .wrap {
+            max-width: 560px;
+            margin: 0 auto;
+            padding: 16px;
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 16px;
+            box-shadow: 0 1px 2px rgba(15,23,42,.06);
+        }
+
+        h1 {
+            font-size: 18px;
+            margin: 0 0 10px;
+        }
+
+        .subtitle {
+            color: var(--muted);
+            font-size: 13px;
+            margin: 0 0 14px;
+            line-height: 1.35;
+        }
+
+        label {
+            display: block;
+            margin: 12px 0 6px;
+            color: var(--text);
+            font-weight: 700;
+            font-size: 13px;
+        }
+
+        select, input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            background: var(--bg);
+            color: var(--text);
+            font-size: 16px;
+            outline: none;
+        }
+
+            select:disabled, input:disabled {
+                background: #f1f5f9;
+                color: #64748b;
+            }
+
+        .row {
+            display: flex;
+            gap: 10px;
+            margin-top: 14px
+        }
+
+        button {
+            flex: 1;
+            padding: 12px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            background: #0f172a;
+            color: #ffffff;
+            font-weight: 800;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+            button.primary {
+                background: var(--primary);
+                border-color: rgba(22,163,74,.35)
+            }
+
+            button.danger {
+                background: var(--danger);
+                border-color: rgba(220,38,38,.35)
+            }
+
+            button:disabled {
+                opacity: .5;
+                cursor: not-allowed
+            }
+
+        .msg {
+            margin-top: 12px;
+            padding: 12px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            background: #ffffff;
+            color: var(--text);
+        }
+
+            .msg.ok {
+                border-color: rgba(22,163,74,.35)
+            }
+
+            .msg.bad {
+                border-color: rgba(220,38,38,.35)
+            }
+
+        .kv {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 8px;
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .pill {
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            padding: 4px 10px;
+            background: #f8fafc;
+        }
+
+        .small {
+            color: var(--muted);
+            font-size: 12px;
+            margin-top: 12px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="card">
+            <h1>Chấm công (QR + PIN)</h1>
+            <p class="subtitle">Quét QR tại quầy → chọn nhân viên → nhập PIN → Check-in/Check-out.</p>
+
+            <div id="qrStatus" class="msg">Đang kiểm tra QR…</div>
+            <div class="kv" id="qrMeta" style="display:none;">
+                <span class="pill" id="metaK"></span>
+                <span class="pill" id="metaC"></span>
+            </div>
+
+            <label>Nhân viên</label>
+            <select id="employeeSelect" disabled>
+                <option value="">Đang tải danh sách…</option>
+            </select>
+
+            <label>PIN</label>
+            <input id="pin" type="password" inputmode="numeric" pattern="[0-9]*" maxlength="6" placeholder="Nhập 4–6 số" />
+            <!-- Manager approval box (hidden by default) -->
+            <!---->            <div id="mgrBox" style="display:none; margin-top:12px; border:1px solid #f59e0b; padding:12px; border-radius:10px; background:#fff7ed;">
+                <div style="font-weight:600; margin-bottom:8px;">Thiết bị mới cần duyệt</div>
+
+                <label style="display:block; font-size:14px; margin-bottom:6px;">Mã quản lý</label>
+                <div style="display:flex; gap:8px;">
+                    <input id="mgrCode" type="password" inputmode="numeric"
+                           placeholder="Nhập mã quản lý..."
+                           style="flex:1; padding:10px; border:1px solid #e5e7eb; border-radius:10px;" />
+                    <button id="btnApproveMgr"
+                            type="button"
+                            style="padding:10px 14px; border-radius:10px; background:#f59e0b; color:#fff; border:none; font-weight:600;">
+                        Xác nhận
+                    </button>
+                </div>
+
+                <div style="font-size:12px; color:#6b7280; margin-top:8px;">
+                    Nhập mã quản lý để duyệt thiết bị này cho nhân viên.
+                </div>
+            </div>
+
+            <div class="row">
+                <button id="btnIn" class="primary" disabled>Check-in</button>
+                <button id="btnOut" class="danger" disabled>Check-out</button>
+            </div>
+
+            <div id="result" class="msg" style="display:none;"></div>
+
+            <div class="small">
+                * QR có hiệu lực ngắn (khoảng 30 giây). Nếu báo hết hạn, hãy quét lại tại quầy.<br />
+                * Nếu Wi-Fi quán có chế độ “Guest/Isolation”, hãy dùng Wi-Fi Staff (không cô lập thiết bị).
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const qs = new URLSearchParams(location.search);
+        const kioskCode = qs.get('k') || '';
+        const counter = Number(qs.get('c') || 0);
+        const signature = qs.get('s') || '';
+
+        const qrStatus = document.getElementById('qrStatus');
+        const qrMeta = document.getElementById('qrMeta');
+        const metaK = document.getElementById('metaK');
+        const metaC = document.getElementById('metaC');
+
+        const employeeSelect = document.getElementById('employeeSelect');
+        const pin = document.getElementById('pin');
+        const btnIn = document.getElementById('btnIn');
+        const btnOut = document.getElementById('btnOut');
+        const result = document.getElementById('result');
+        const mgrBox = document.getElementById('mgrBox');
+        const mgrCode = document.getElementById('mgrCode');
+        const btnApproveMgr = document.getElementById('btnApproveMgr');
+
+        let pendingAction = null; // 'IN' or 'OUT'
+        let inFlight = false;
+
+        // Device binding: generate a stable device token per browser (localStorage).
+        function getDeviceToken() {
+            const key = 'ta_device_token';
+            let t = localStorage.getItem(key);
+            if (!t) {
+                if (window.crypto && crypto.randomUUID) {
+                    t = crypto.randomUUID();
+                } else {
+                    // Fallback UUID v4-ish
+                    const s4 = () => Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
+                    t = `${s4()}${s4()}-${s4()}-${s4()}-${s4()}-${s4()}${s4()}${s4()}`;
+                }
+                localStorage.setItem(key, t);
+            }
+            return t;
+        }
+
+        function showStatus(ok, msg) {
+            qrStatus.textContent = msg;
+            qrStatus.classList.remove('ok', 'bad');
+            qrStatus.classList.add(ok ? 'ok' : 'bad');
+        }
+
+        function showResult(ok, msg) {
+            result.style.display = 'block';
+            result.textContent = msg;
+            result.classList.remove('ok', 'bad');
+            result.classList.add(ok ? 'ok' : 'bad');
+        }
+
+        function setReady(ready) {
+            employeeSelect.disabled = !ready;
+            btnIn.disabled = !ready;
+            btnOut.disabled = !ready;
+        }
+
+        async function loadEmployees() {
+            const res = await fetch('/api/employees/active', { cache: 'no-store' });
+            if (!res.ok) throw new Error('Không tải được danh sách nhân viên');
+            const data = await res.json();
+            const list = Array.isArray(data)
+                ? data
+                : (data?.data || data?.items || []);
+            if (data?.ok === false) throw new Error(data?.message || 'Không tải được danh sách nhân viên');
+
+            employeeSelect.innerHTML = '<option value="">-- Chọn nhân viên --</option>';
+            for (const e of list) {
+                const code = e.employeeCode || e.EmployeeCode;
+                const name = e.fullName || e.FullName;
+                const opt = document.createElement('option');
+                opt.value = code;
+                opt.textContent = `${name}`;
+                /*opt.textContent = `${name} (${code})`;*/
+                employeeSelect.appendChild(opt);
+            }
+
+            const last = localStorage.getItem('ta_last_employee');
+            if (last) employeeSelect.value = last;
+            employeeSelect.addEventListener('change', () => localStorage.setItem('ta_last_employee', employeeSelect.value));
+        }
+
+        function validateQr() {
+            if (!kioskCode || !counter || !signature) {
+                showStatus(false, 'QR không hợp lệ. Vui lòng quét lại tại quầy.');
+                setReady(false);
+                return false;
+            }
+            metaK.textContent = `Kiosk: ${kioskCode}`;
+            metaC.textContent = `Counter: ${counter}`;
+            qrMeta.style.display = 'flex';
+            showStatus(true, 'QR hợp lệ. Hãy chọn nhân viên và nhập PIN.');
+            return true;
+        }
+
+
+        async function send(action) {
+            if (inFlight) return;
+            inFlight = true;
+            result.style.display = 'none';
+            const employeeCode = employeeSelect.value;
+            const p = (pin.value || '').trim();
+            if (!employeeCode) return showResult(false, 'Bạn chưa chọn nhân viên.');
+            if (!p) return showResult(false, 'Bạn chưa nhập PIN.');
+
+            const deviceToken = getDeviceToken();
+            const managerCode = (mgrCode?.value || '').trim() || null;
+
+            btnIn.disabled = true;
+            btnOut.disabled = true;
+
+            try {
+                const endpoint = action === 'IN' ? '/api/attendance/checkin' : '/api/attendance/checkout';
+                const res = await fetch(endpoint, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ employeeCode, pin: p, kioskCode, counter, signature, deviceToken, managerCode })
+                });
+                const data = await res.json().catch(() => ({}));
+                if (res.ok && data?.ok) {
+                    showResult(true, data.message || 'Thành công');
+                    pin.value = '';
+                    mgrCode.value = '';
+                    if (mgrBox) mgrBox.style.display = 'none';
+                } else {
+                    const requiresManager = !!(
+                        data?.requiresManager === true || data?.RequiresManager === true ||
+                        data?.data?.requiresManager === true || data?.data?.RequiresManager === true ||
+                        data?.data?.requires_manager === true
+                    );
+                    if (requiresManager) {
+                        pendingAction = action;
+                        if (mgrBox) mgrBox.style.display = 'block';
+                        // If user already entered manager code but still requires approval => wrong manager code.
+                        const triedManager = !!(managerCode && managerCode.length > 0);
+                        showResult(false, triedManager ? 'Sai mã quản lý.' : (data.message || 'Thiết bị mới: cần mã quản lý để duyệt.'));
+                        if (mgrCode) mgrCode.focus();
+                    } else {
+                        showResult(false, data.message || 'Thất bại');
+                    }
+                }
+            } catch (e) {
+                showResult(false, 'Lỗi mạng: ' + (e.message || e));
+            } finally {
+                inFlight = false;
+                btnIn.disabled = false;
+                btnOut.disabled = false;
+            }
+        }
+
+        btnIn.addEventListener('click', () => send('IN'));
+        btnOut.addEventListener('click', () => send('OUT'));
+
+        // Press Enter in manager code box to retry the pending action
+        if (mgrCode) {
+            // Press Enter in manager code box to retry the pending action
+            mgrCode.addEventListener('keydown', (ev) => {
+                if (ev.key === 'Enter' && pendingAction) {
+                    ev.preventDefault();
+                    send(pendingAction);
+                }
+            });
+        }
+
+        // Explicit approve button (easier on mobile): retry the pending action after manager enters code
+        if (btnApproveMgr) {
+            // Explicit approve button (easier on mobile): retry the pending action after manager enters code
+            btnApproveMgr.addEventListener('click', () => {
+                if (!pendingAction) pendingAction = 'IN';
+                send(pendingAction);
+            });
+        }
+
+        (async function init() {
+            const ok = validateQr();
+            if (!ok) return;
+            try {
+                await loadEmployees();
+                setReady(true);
+            } catch (e) {
+                showStatus(false, (e.message || e).toString());
+                setReady(false);
+            }
+        })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,238 @@
+
+<!doctype html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Chấm công - TimeAttendance</title>
+    <style>
+        body {
+            font-family: system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+            margin: 0;
+            background: #0b1220;
+            color: #e5e7eb;
+        }
+
+        .wrap {
+            max-width: 520px;
+            margin: 0 auto;
+            padding: 16px;
+        }
+
+        .card {
+            background: #111827;
+            border: 1px solid rgba(255,255,255,.08);
+            border-radius: 16px;
+            padding: 16px;
+        }
+
+        h1 {
+            font-size: 18px;
+            margin: 0 0 12px;
+        }
+
+        label {
+            display: block;
+            margin: 12px 0 6px;
+            color: #cbd5e1;
+            font-weight: 600;
+        }
+
+        select, input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,.12);
+            background: #0b1220;
+            color: #e5e7eb;
+            font-size: 16px;
+        }
+
+        .row {
+            display: flex;
+            gap: 10px;
+            margin-top: 14px;
+        }
+
+        button {
+            flex: 1;
+            padding: 12px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,.14);
+            background: #111827;
+            color: #e5e7eb;
+            font-weight: 800;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+            button.primary {
+                background: rgba(34,197,94,.18);
+                border-color: rgba(34,197,94,.35);
+            }
+
+            button.danger {
+                background: rgba(239,68,68,.18);
+                border-color: rgba(239,68,68,.35);
+            }
+
+            button:disabled {
+                opacity: .5;
+                cursor: not-allowed;
+            }
+
+        .msg {
+            margin-top: 14px;
+            padding: 12px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,.12);
+            background: #0b1220;
+            color: #e5e7eb;
+        }
+
+        .small {
+            color: #94a3b8;
+            font-size: 12px;
+            margin-top: 10px;
+            line-height: 1.35;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="card">
+            <h1>Chấm công (QR + PIN)</h1>
+
+            <div id="qrStatus" class="msg">Đang kiểm tra QR...</div>
+
+            <label>Nhân viên</label>
+            <select id="employeeSelect" disabled>
+                <option value="">Đang tải danh sách...</option>
+            </select>
+
+            <label>PIN</label>
+            <input id="pin" inputmode="numeric" pattern="[0-9]*" maxlength="6" placeholder="Nhập 4-6 số" />
+
+            <div class="row">
+                <button id="btnIn" class="primary" disabled>Check-in</button>
+                <button id="btnOut" class="danger" disabled>Check-out</button>
+            </div>
+
+            <div id="result" class="msg" style="display:none;"></div>
+            <div class="small">
+                * Chỉ cần điện thoại có Internet (4G/5G/Wi-Fi bất kỳ).<br />
+                * QR có hiệu lực ngắn (khoảng 30 giây). Nếu báo hết hạn, hãy quét lại.
+            </div>
+        </div>
+    </div>
+
+    <script>
+  const qs = new URLSearchParams(location.search);
+  const kioskCode = qs.get('k') || '';
+  const counter = Number(qs.get('c') || 0);
+  const signature = qs.get('s') || '';
+
+  const qrStatus = document.getElementById('qrStatus');
+  const employeeSelect = document.getElementById('employeeSelect');
+  const pin = document.getElementById('pin');
+  const btnIn = document.getElementById('btnIn');
+  const btnOut = document.getElementById('btnOut');
+  const result = document.getElementById('result');
+
+  function showResult(ok, msg) {
+    result.style.display = 'block';
+    result.textContent = msg;
+    result.style.borderColor = ok ? 'rgba(34,197,94,.35)' : 'rgba(239,68,68,.35)';
+  }
+
+  function setReady(ready) {
+    employeeSelect.disabled = !ready;
+    btnIn.disabled = !ready;
+    btnOut.disabled = !ready;
+  }
+
+  async function loadEmployees() {
+    const res = await fetch('/api/employees/active', { cache: 'no-store' });
+    const data = await res.json();
+    const list = data?.data || [];
+
+    employeeSelect.innerHTML = '<option value="">-- Chọn nhân viên --</option>';
+    for (const e of list) {
+      const opt = document.createElement('option');
+      opt.value = e.employeeCode || e.EmployeeCode;
+      opt.textContent = (e.fullName || e.FullName) + ' (' + (e.employeeCode || e.EmployeeCode) + ')';
+      employeeSelect.appendChild(opt);
+    }
+
+    const last = localStorage.getItem('ta_last_employee');
+    if (last) employeeSelect.value = last;
+
+    employeeSelect.addEventListener('change', () => {
+      localStorage.setItem('ta_last_employee', employeeSelect.value);
+    });
+  }
+
+  function validateQr() {
+    if (!kioskCode || !counter || !signature) {
+      qrStatus.textContent = 'QR không hợp lệ. Vui lòng quét lại tại quầy.';
+      qrStatus.style.borderColor = 'rgba(239,68,68,.35)';
+      setReady(false);
+      return false;
+    }
+    qrStatus.textContent = 'QR hợp lệ. Hãy chọn nhân viên và nhập PIN.';
+    qrStatus.style.borderColor = 'rgba(34,197,94,.35)';
+    return true;
+  }
+
+  async function send(action) {
+    result.style.display = 'none';
+
+    const employeeCode = employeeSelect.value;
+    const p = (pin.value || '').trim();
+    if (!employeeCode) return showResult(false, 'Bạn chưa chọn nhân viên.');
+    if (!p) return showResult(false, 'Bạn chưa nhập PIN.');
+
+    btnIn.disabled = true;
+    btnOut.disabled = true;
+
+    try {
+      const endpoint = action === 'IN' ? '/api/attendance/checkin' : '/api/attendance/checkout';
+      const res = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ employeeCode, pin: p, kioskCode, counter, signature })
+      });
+      const data = await res.json().catch(() => ({}));
+      if (res.ok && data?.ok) {
+        showResult(true, data.message || 'Thành công');
+        pin.value = '';
+      } else {
+        showResult(false, data.message || 'Thất bại');
+      }
+    } catch (e) {
+      showResult(false, 'Lỗi mạng: ' + (e.message || e));
+    } finally {
+      btnIn.disabled = false;
+      btnOut.disabled = false;
+    }
+  }
+
+  btnIn.addEventListener('click', () => send('IN'));
+  btnOut.addEventListener('click', () => send('OUT'));
+
+  (async function init() {
+    const ok = validateQr();
+    if (!ok) return;
+
+    try {
+      await loadEmployees();
+      setReady(true);
+    } catch (e) {
+      qrStatus.textContent = 'Không tải được danh sách nhân viên. ' + (e.message || e);
+      qrStatus.style.borderColor = 'rgba(239,68,68,.35)';
+      setReady(false);
+    }
+  })();
+    </script>
+</body>
+</html>

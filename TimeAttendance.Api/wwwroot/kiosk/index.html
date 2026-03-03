@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Kiosk QR - TimeAttendance</title>
+    <style>
+        body {
+            font-family: system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+            margin: 0;
+            background: #0b1220;
+            color: #e5e7eb;
+        }
+
+        .wrap {
+            max-width: 920px;
+            margin: 0 auto;
+            padding: 24px;
+        }
+
+        .card {
+            background: #111827;
+            border: 1px solid rgba(255,255,255,.08);
+            border-radius: 16px;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 340px 1fr;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .qr {
+            width: 320px;
+            height: 320px;
+            background: #fff;
+            border-radius: 12px;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+            .qr img {
+                width: 300px;
+                height: 300px;
+                image-rendering: pixelated;
+            }
+
+        .meta h1 {
+            font-size: 22px;
+            margin: 0 0 10px;
+        }
+
+        .meta p {
+            margin: 8px 0;
+            color: #cbd5e1;
+            line-height: 1.4;
+        }
+
+        .pill {
+            display: inline-block;
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: rgba(59,130,246,.15);
+            color: #93c5fd;
+            font-weight: 600;
+            font-size: 12px;
+        }
+
+        .url {
+            background: #0b1220;
+            border: 1px solid rgba(255,255,255,.08);
+            border-radius: 12px;
+            padding: 10px;
+            font-family: ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;
+            font-size: 12px;
+            word-break: break-all;
+            color: #e5e7eb;
+        }
+
+        .row {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        button {
+            cursor: pointer;
+            border: 1px solid rgba(255,255,255,.14);
+            background: #111827;
+            color: #e5e7eb;
+            padding: 10px 12px;
+            border-radius: 12px;
+            font-weight: 600;
+        }
+
+            button:hover {
+                background: #0b1220;
+            }
+
+        @media (max-width: 780px) {
+            .card {
+                grid-template-columns: 1fr;
+            }
+
+            .qr {
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="row" style="justify-content:space-between; margin-bottom:16px;">
+            <div>
+                <div class="pill">Kiosk QR (đổi mỗi 30 giây)</div>
+            </div>
+            <div class="row">
+                <span id="kioskCode" class="pill" style="background:rgba(34,197,94,.15);color:#86efac;">...</span>
+                <span id="countdown" class="pill" style="background:rgba(245,158,11,.15);color:#fdba74;">...</span>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="qr"><img id="qrImg" alt="QR" /></div>
+            <div class="meta">
+                <h1>Nhân viên quét QR bằng điện thoại</h1>
+                <p>Sau khi quét, điện thoại sẽ mở trang chấm công. Nhập <b>PIN cá nhân</b> để Check-in/Check-out.</p>
+                <p><b>Ghi chú:</b> Chỉ cần điện thoại có Internet là quét và chấm công được.</p>
+                <div style="margin:14px 0 8px; font-weight:700;">Link trong QR</div>
+                <div id="url" class="url">...</div>
+                <div class="row" style="margin-top:12px;">
+                    <button id="btnRefresh">Làm mới ngay</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const qrImg = document.getElementById('qrImg');
+        const urlBox = document.getElementById('url');
+        const kioskCodeEl = document.getElementById('kioskCode');
+        const countdownEl = document.getElementById('countdown');
+        const btnRefresh = document.getElementById('btnRefresh');
+
+        async function loadToken() {
+            const res = await fetch('/kiosk/token', { cache: 'no-store' });
+            const tok = await res.json();
+            if (!tok || !tok.url) throw new Error('Token invalid');
+
+            kioskCodeEl.textContent = 'Kiosk: ' + (tok.kioskCode || tok.KioskCode || '');
+            const expires = tok.expiresInSeconds ?? tok.ExpiresInSeconds ?? 30;
+            countdownEl.textContent = 'Hết hạn sau: ' + expires + 's';
+
+            urlBox.textContent = tok.url || tok.Url;
+
+            // Refresh QR image (server generates PNG)
+            qrImg.src = '/kiosk/qr.png?ts=' + Date.now();
+        }
+
+        let t;
+        async function tick() {
+            try { await loadToken(); }
+            catch (e) { urlBox.textContent = 'Lỗi: ' + (e.message || e); }
+            clearTimeout(t);
+            t = setTimeout(tick, 1000);
+        }
+
+        btnRefresh.addEventListener('click', () => loadToken());
+
+        tick();
+    </script>
+</body>
+</html>
