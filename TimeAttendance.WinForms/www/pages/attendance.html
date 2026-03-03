@@ -1,0 +1,72 @@
+﻿
+<div class="max-w-[900px] mx-auto space-y-6">
+  <div class="text-center">
+    <h1 class="text-3xl font-extrabold tracking-tight">Chấm Công</h1>
+    <p class="text-[#4c939a] mt-2">Chọn nhân viên và nhập PIN 4 số để Check-in / Check-out</p>
+  </div>
+
+  <div class="bg-white dark:bg-[#162a2c] p-6 rounded-xl shadow-sm border border-[#cfe5e7] dark:border-[#2a3f41]">
+    <div class="flex items-center gap-2 mb-4">
+      <span class="material-symbols-outlined text-primary">badge</span>
+      <h3 class="text-lg font-bold">Điểm danh</h3>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div>
+        <label class="block text-xs font-bold uppercase tracking-wider text-[#4c939a] mb-2">Nhân viên</label>
+
+        <div class="flex flex-col gap-2">
+          <input id="att-emp"
+                 class="w-full p-3 border border-[#cfe5e7] dark:border-[#2a3f41] rounded-lg bg-transparent"
+                 placeholder="Nhập tên nhân viên để tìm)"
+                 list="att-emp-list"
+                 autocomplete="off" />
+          <datalist id="att-emp-list"></datalist>
+
+          <div id="att-emp-name" class="text-sm text-[#4c939a] min-h-[20px]"></div>
+        </div>
+
+        <div class="mt-3 text-xs text-[#4c939a]">
+          Mẹo: gõ vài ký tự để lọc, sau đó chọn trong danh sách.
+        </div>
+      </div>
+
+      <div>
+        <label class="block text-xs font-bold uppercase tracking-wider text-[#4c939a] mb-2">PIN (4 số)</label>
+
+        <div class="flex gap-3 justify-start">
+          <input data-pin class="w-14 h-16 text-center text-2xl font-extrabold border-0 border-b-4 border-[#cfe5e7] dark:border-[#2a3f41] bg-transparent focus:border-primary focus:ring-0 transition-colors" maxlength="1" placeholder="•" type="password" inputmode="numeric" pattern="[0-9]*" />
+          <input data-pin class="w-14 h-16 text-center text-2xl font-extrabold border-0 border-b-4 border-[#cfe5e7] dark:border-[#2a3f41] bg-transparent focus:border-primary focus:ring-0 transition-colors" maxlength="1" placeholder="•" type="password" inputmode="numeric" pattern="[0-9]*" />
+          <input data-pin class="w-14 h-16 text-center text-2xl font-extrabold border-0 border-b-4 border-[#cfe5e7] dark:border-[#2a3f41] bg-transparent focus:border-primary focus:ring-0 transition-colors" maxlength="1" placeholder="•" type="password" inputmode="numeric" pattern="[0-9]*" />
+          <input data-pin class="w-14 h-16 text-center text-2xl font-extrabold border-0 border-b-4 border-[#cfe5e7] dark:border-[#2a3f41] bg-transparent focus:border-primary focus:ring-0 transition-colors" maxlength="1" placeholder="•" type="password" inputmode="numeric" pattern="[0-9]*" />
+        </div>
+   
+      </div>
+    </div>
+
+    <div id="att-status" class="hidden mt-5 px-4 py-3 rounded-lg text-sm font-semibold"></div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
+      <button id="btn-checkin" type="button"
+              class="flex items-center justify-center gap-2 py-5 bg-emerald-500 hover:bg-emerald-600 text-white rounded-lg font-bold text-lg shadow-lg shadow-emerald-500/20 transition-all active:scale-95">
+        <span class="material-symbols-outlined">login</span>
+        Check-in
+      </button>
+
+      <button id="btn-checkout" type="button"
+              class="flex items-center justify-center gap-2 py-5 bg-orange-500 hover:bg-orange-600 text-white rounded-lg font-bold text-lg shadow-lg shadow-orange-500/20 transition-all active:scale-95">
+        <span class="material-symbols-outlined">logout</span>
+        Check-out
+      </button>
+    </div>
+  </div>
+
+  <div class="bg-primary/5 dark:bg-primary/10 border border-primary/20 p-4 rounded-xl text-sm text-[#4c939a]">
+    <div class="font-bold mb-1">Ghi chú</div>
+    <ul class="list-disc pl-5 space-y-1">
+      <li>Chọn đúng nhân viên, nhập đúng PIN rồi bấm Check-in hoặc Check-out.</li>
+      <li>Nếu đã Check-in mà chưa Check-out, hệ thống sẽ yêu cầu bạn bấm đúng nút Check-out.</li>
+      <li>Nếu PIN sai / không có ca phù hợp / chưa Check-in… hệ thống sẽ báo lỗi ngay.</li>
+    </ul>
+  </div>
+</div>

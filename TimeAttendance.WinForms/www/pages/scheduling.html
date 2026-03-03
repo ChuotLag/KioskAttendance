@@ -1,0 +1,58 @@
+﻿<div class="px-6 py-6">
+    <div class="flex items-center justify-between gap-4">
+        <div>
+            <div class="text-xl font-extrabold">Lịch làm (tuần kế tiếp)</div>
+            <div id="sch-week-label" class="text-sm text-slate-500 mt-1"></div>
+        </div>
+
+        <div class="flex items-center gap-3">
+            <select id="sch-emp" class="h-10 px-3 rounded-xl border border-[#cfe5e7] bg-white"></select>
+            <button id="sch-reload" class="h-10 px-4 rounded-xl border border-[#cfe5e7] font-bold hover:bg-[#e7f2f3]">
+                Tải lại
+            </button>
+        </div>
+    </div>
+
+    <div id="sch-status" class="hidden mt-4 p-4 rounded-xl border text-sm font-semibold"></div>
+
+    <div class="mt-6 border border-[#cfe5e7] rounded-2xl overflow-hidden bg-white">
+        <div id="sch-grid-head" class="grid" style="grid-template-columns: repeat(7, 1fr);"></div>
+        <div id="sch-grid-body" class="grid" style="grid-template-columns: repeat(7, 1fr);"></div>
+    </div>
+</div>
+
+<!-- Modal assign shift -->
+<div id="sch-modal" class="hidden fixed inset-0 z-50">
+    <div class="absolute inset-0 bg-black/30" data-sch-close="1"></div>
+
+    <div class="relative mx-auto mt-20 w-[720px] max-w-[92vw] rounded-2xl bg-white shadow-xl border border-[#cfe5e7] overflow-hidden">
+        <div class="px-5 py-4 border-b border-[#cfe5e7] flex items-center justify-between">
+            <div>
+                <div id="sch-modal-title" class="text-lg font-extrabold">Gán ca</div>
+                <div id="sch-modal-sub" class="text-sm text-slate-500 mt-1"></div>
+            </div>
+            <button id="sch-modal-close" class="h-9 w-9 rounded-xl border border-[#cfe5e7] font-extrabold">×</button>
+        </div>
+
+        <div class="px-5 py-5">
+            <div id="sch-modal-error" class="hidden mb-4 p-3 rounded-xl border border-red-200 bg-red-50 text-red-700 text-sm font-semibold"></div>
+
+            <div class="grid grid-cols-2 gap-4">
+                <div>
+                    <div class="text-sm font-bold mb-2">Ca làm</div>
+                    <select id="sch-shift" class="h-10 w-full px-3 rounded-xl border border-[#cfe5e7] bg-white"></select>
+                </div>
+                <div>
+                    <div class="text-sm font-bold mb-2">Ghi chú</div>
+                    <input id="sch-note" class="h-10 w-full px-3 rounded-xl border border-[#cfe5e7]" placeholder="Ví dụ: làm thay ca..." />
+                </div>
+            </div>
+        </div>
+
+        <div class="px-5 py-4 border-t border-[#cfe5e7] flex items-center justify-end gap-3 bg-slate-50">
+            <button id="sch-del" class="h-10 px-4 rounded-xl border border-red-200 text-red-700 font-extrabold hover:bg-red-50">Xóa lịch</button>
+            <button id="sch-cancel" class="h-10 px-4 rounded-xl border border-[#cfe5e7] font-extrabold hover:bg-white">Hủy</button>
+            <button id="sch-save" class="h-10 px-5 rounded-xl bg-[#38b8c6] text-white font-extrabold hover:opacity-95">Lưu</button>
+        </div>
+    </div>
+</div>

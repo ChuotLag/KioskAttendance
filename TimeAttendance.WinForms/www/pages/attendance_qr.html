@@ -1,0 +1,121 @@
+﻿
+<div class="max-w-[1200px] mx-auto space-y-6">
+    <!-- Headline Area -->
+<!--    <div class="text-center mb-8">
+        <h1 class="text-3xl font-extrabold tracking-tight">Daily Check-In Portal</h1>
+        <p class="text-[#4c939a] mt-2">Verify your identity to log your shift attendance</p>
+    </div>-->
+
+    <!-- Main Verification Zone -->
+    <div class="flex justify-center">
+        <!-- Left Panel: Kiosk QR (Cách B) -->
+        <div class="bg-white dark:bg-[#162a2c] p-6 rounded-xl shadow-sm border border-[#cfe5e7] dark:border-[#2a3f41] flex flex-col w-full max-w-[900px]">
+            <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-primary">qr_code_2</span>
+                    <h3 class="text-lg font-bold">Kiosk QR (đổi mỗi 30 giây)</h3>
+                </div>
+
+                <div class="flex items-center gap-2 px-3 py-1 bg-amber-50 dark:bg-amber-900/20 text-amber-700 dark:text-amber-300 rounded-full">
+                    <span class="material-symbols-outlined text-sm">timer</span>
+                    <span class="text-xs font-bold font-mono">
+                        Còn: <span id="qr-left">--</span>s
+                    </span>
+                </div>
+            </div>
+
+            <div class="flex-1 min-h-[300px] rounded-lg overflow-hidden border-4 border-[#cfe5e7] dark:border-[#2a3f41] bg-[#0d1a1b] flex items-center justify-center">
+                <div class="w-full h-full p-6 flex items-center justify-center">
+                    <!-- QR image -->
+                    <div class="bg-white rounded-xl p-4 flex items-center justify-center">
+                        <img id="qr-img"
+                             alt="Kiosk QR"
+                             class="w-[280px] h-[280px] object-contain"
+                             src="" />
+                    </div>
+
+                    <!-- Controls / debug (kiosk only) -->
+                    <!--<div class="flex flex-col gap-3">
+        <button id="qr-refresh"
+                class="inline-flex items-center justify-center px-4 py-2 rounded-lg bg-primary text-[#0d1a1b] font-extrabold">
+            Làm mới QR
+        </button>
+        <input id="qr-link" readonly
+               class="w-full px-3 py-2 rounded-lg border border-[#cfe5e7] bg-white text-xs font-mono"
+               placeholder="Link trong QR" />
+        <div id="qr-status" class="hidden"></div>
+    </div>-->
+                </div>
+            </div>
+        </div>
+
+        <!-- Shift Info & Logs -->
+        <!--<div class="grid grid-cols-1 gap-6">-->
+        <!-- Today's Shift Info -->
+        <!--<div class="bg-primary/5 dark:bg-primary/10 border border-primary/20 p-4 rounded-xl flex flex-wrap items-center justify-between gap-4">
+        <div class="flex items-center gap-4">
+            <div class="p-3 bg-primary rounded-lg">
+                <span class="material-symbols-outlined text-white">calendar_today</span>
+            </div>
+            <div>
+                <p class="text-xs uppercase font-bold tracking-wider text-[#4c939a]">Current Assigned Shift</p>
+                <p class="text-xl font-extrabold text-[#0d1a1b] dark:text-white">Morning Shift (Ca 1)</p>
+            </div>
+        </div>
+        <div class="flex gap-8">
+            <div class="text-center px-6 border-r border-primary/20">
+                <p class="text-xs font-medium text-[#4c939a]">Start Time</p>
+                <p class="text-lg font-bold">06:00 AM</p>
+            </div>
+            <div class="text-center px-6">
+                <p class="text-xs font-medium text-[#4c939a]">End Time</p>
+                <p class="text-lg font-bold">12:00 PM</p>
+            </div>
+        </div>
+    </div>-->
+        <!-- Logs Table -->
+        <!--        <div class="bg-white dark:bg-[#162a2c] rounded-xl shadow-sm border border-[#cfe5e7] dark:border-[#2a3f41] overflow-hidden">
+                <div class="px-6 py-4 border-b border-[#cfe5e7] dark:border-[#2a3f41] flex justify-between items-center">
+                    <h3 class="font-bold flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary">history</span>
+                        Today's Logs
+                    </h3>
+                    <span class="text-xs bg-[#f0f9fa] dark:bg-[#1e3436] text-[#4c939a] px-3 py-1 rounded-full font-bold">October 24, 2023</span>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left">
+                        <thead class="bg-[#f8fbfc] dark:bg-[#1c3234] text-xs uppercase text-[#4c939a]">
+                            <tr>
+                                <th class="px-6 py-3 font-bold">Time</th>
+                                <th class="px-6 py-3 font-bold">Activity</th>
+                                <th class="px-6 py-3 font-bold">Verification</th>
+                                <th class="px-6 py-3 font-bold">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-[#cfe5e7] dark:divide-[#2a3f41]">
+                            <tr class="hover:bg-gray-50 dark:hover:bg-[#1e3436] transition-colors">
+                                <td class="px-6 py-4 font-bold">05:58 AM</td>
+                                <td class="px-6 py-4">
+                                    <span class="inline-flex items-center gap-1.5 text-emerald-600 dark:text-emerald-400 font-medium">
+                                        <span class="size-2 rounded-full bg-emerald-500"></span>
+                                        Check-in
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 text-sm">QR Code + PIN</td>
+                                <td class="px-6 py-4">
+                                    <span class="px-2 py-1 text-[10px] font-bold bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400 rounded uppercase">On-time</span>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-gray-50 dark:hover:bg-[#1e3436] transition-colors">
+                                <td class="px-6 py-4 font-bold text-gray-400 italic">-- : --</td>
+                                <td class="px-6 py-4 text-gray-400">Waiting for checkout...</td>
+                                <td class="px-6 py-4 text-gray-400">-</td>
+                                <td class="px-6 py-4 text-gray-400">-</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>-->
+        <!--</div>-->
+    </div>
+</div>

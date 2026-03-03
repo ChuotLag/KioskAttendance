@@ -1,0 +1,123 @@
+﻿<!-- Employees Management Page -->
+<div class="max-w-6xl mx-auto">
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <div>
+            <h3 class="text-xl font-bold tracking-tight">Nhân viên</h3>
+            <p class="text-sm text-[#4c939a] mt-1">   Thêm / Sửa / Xóa (nghỉ) nhân viên.</p>
+        </div>
+
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+            <!--  <div class="relative">
+          <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[#4c939a]">search</span>
+          <input id="emp-search" type="text" placeholder="      Tìm theo mã, tên, SĐT"
+                 class="w-full sm:w-72 pl-10 pr-3 h-10 rounded-lg border border-[#cfe5e7] dark:border-[#2a3c3e] bg-white dark:bg-[#152a2c] text-sm outline-none focus:ring-2 focus:ring-primary/30" />
+      </div>-->
+            <div class="w-full sm:w-72 h-10 flex items-center rounded-lg border border-[#cfe5e7] dark:border-[#2a3c3e] bg-white dark:bg-[#152a2c] overflow-hidden">
+               <!-- <span class="material-symbols-outlined px-3 text-[#4c939a]">search</span>-->
+                <span class="material-symbols-outlined px-3 text-[#4c939a] border-r border-[#cfe5e7] dark:border-[#2a3c3e]">search</span>
+                <input id="emp-search" type="text" placeholder="Tìm theo mã, tên, SĐT"
+                       class="flex-1 h-full px-3 bg-transparent text-sm outline-none focus:ring-0" />
+            </div>
+
+            <label class="inline-flex items-center gap-2 text-sm text-[#4c939a] select-none">
+                <input id="emp-include-inactive" type="checkbox" class="size-4 accent-primary" />
+                Hiện cả nhân viên đã nghỉ
+            </label>
+
+            <button id="btn-emp-add"
+                    class="h-10 px-4 rounded-lg bg-primary text-[#0d1a1b] text-sm font-bold transition-transform active:scale-95 inline-flex items-center justify-center gap-2">
+                <span class="material-symbols-outlined text-[20px]">person_add</span>
+                Thêm nhân viên
+            </button>
+        </div>
+    </div>
+
+    <div id="emp-status" class="hidden mt-4 p-4 rounded-xl border"></div>
+
+    <div class="mt-6 rounded-xl border border-[#cfe5e7] dark:border-[#2a3c3e] overflow-hidden bg-white dark:bg-[#152a2c]">
+        <div class="overflow-x-auto">
+            <table class="min-w-full text-sm">
+                <thead class="bg-[#e7f2f3] dark:bg-[#1a3538]">
+                    <tr>
+                        <th class="px-6 py-3 text-left font-bold text-[#4c939a]">Mã</th>
+                        <th class="px-6 py-3 text-left font-bold text-[#4c939a]">Họ tên</th>
+                        <th class="px-6 py-3 text-left font-bold text-[#4c939a]">SĐT</th>
+                        <th class="px-6 py-3 text-left font-bold text-[#4c939a]">Lương/giờ</th>
+                        <th class="px-6 py-3 text-left font-bold text-[#4c939a]">Trạng thái</th>
+                        <th class="px-6 py-3 text-right font-bold text-[#4c939a]">Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody id="emp-tbody" class="divide-y divide-[#cfe5e7] dark:divide-[#2a3c3e]"></tbody>
+            </table>
+        </div>
+
+        <div class="px-6 py-4 text-xs text-[#4c939a]">
+            Tip: “Xóa” mặc định là <b>cho nghỉ</b> (IsActive = 0). Dữ liệu chấm công/lương vẫn được giữ.
+        </div>
+    </div>
+</div>
+
+<!-- Modal (UI fallback: tự style bằng CSS để luôn đẹp kể cả khi Tailwind build thiếu class) -->
+<div id="emp-modal" aria-hidden="true">
+    <div class="emp-backdrop" data-emp-close="1"></div>
+
+    <div class="emp-dialog" role="dialog" aria-modal="true" aria-labelledby="emp-modal-title">
+        <div class="emp-hd">
+            <div>
+                <h4 id="emp-modal-title" class="emp-title">Thêm nhân viên</h4>
+                <div class="emp-sub">PIN 4. Để trống nếu không đổi.</div>
+            </div>
+            <button id="btn-emp-close" class="emp-close" type="button" aria-label="Đóng">×</button>
+        </div>
+
+        <div class="emp-bd">
+            <input id="emp-id" type="hidden" />
+
+            <div class="emp-grid">
+                <!--<div class="emp-field">
+                    <label for="emp-code">Mã nhân viên</label>
+                    <input id="emp-code" type="text" placeholder="VD: NV001" autocomplete="off" />
+                </div>-->
+
+                <div class="emp-field">
+                    <label for="emp-name">Họ tên</label>
+                    <input id="emp-name" type="text" placeholder="Nguyễn Văn A" autocomplete="off" />
+                </div>
+
+                <div class="emp-grid emp-grid-2">
+                    <div class="emp-field">
+                        <label for="emp-phone">SĐT</label>
+                        <input id="emp-phone" type="text" placeholder="09xxxxxxxx" inputmode="tel" autocomplete="off" />
+                    </div>
+                    <div class="emp-field">
+                        <label for="emp-rate">Lương/giờ</label>
+                        <input id="emp-rate" type="number" min="0" step="1000" placeholder="25000" inputmode="decimal" />
+                    </div>
+                </div>
+
+                <div class="emp-grid emp-grid-2">
+                    <div class="emp-field">
+                        <label for="emp-pin">PIN</label>
+                        <input id="emp-pin" type="password" inputmode="numeric" maxlength="6" placeholder="4 số" autocomplete="new-password" />
+                    </div>
+                    <div class="emp-field">
+                        <label>&nbsp;</label>
+                        <div class="emp-row">
+                            <label class="emp-check">
+                                <input id="emp-active" type="checkbox" checked />
+                                <span>Đang làm</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="emp-modal-error" class="emp-error" style="display:none"></div>
+            </div>
+        </div>
+
+        <div class="emp-actions">
+            <button id="btn-emp-cancel" class="btn" type="button">Hủy</button>
+            <button id="btn-emp-save" class="btn btn-primary" type="button">Lưu</button>
+        </div>
+    </div>
+</div>

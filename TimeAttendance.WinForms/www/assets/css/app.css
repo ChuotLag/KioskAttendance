@@ -1,0 +1,2519 @@
+﻿*, ::before, ::after {
+    --tw-border-spacing-x: 0;
+    --tw-border-spacing-y: 0;
+    --tw-translate-x: 0;
+    --tw-translate-y: 0;
+    --tw-rotate: 0;
+    --tw-skew-x: 0;
+    --tw-skew-y: 0;
+    --tw-scale-x: 1;
+    --tw-scale-y: 1;
+    --tw-pan-x:;
+    --tw-pan-y:;
+    --tw-pinch-zoom:;
+    --tw-scroll-snap-strictness: proximity;
+    --tw-gradient-from-position:;
+    --tw-gradient-via-position:;
+    --tw-gradient-to-position:;
+    --tw-ordinal:;
+    --tw-slashed-zero:;
+    --tw-numeric-figure:;
+    --tw-numeric-spacing:;
+    --tw-numeric-fraction:;
+    --tw-ring-inset:;
+    --tw-ring-offset-width: 0px;
+    --tw-ring-offset-color: #fff;
+    --tw-ring-color: rgb(59 130 246 / 0.5);
+    --tw-ring-offset-shadow: 0 0 #0000;
+    --tw-ring-shadow: 0 0 #0000;
+    --tw-shadow: 0 0 #0000;
+    --tw-shadow-colored: 0 0 #0000;
+    --tw-blur:;
+    --tw-brightness:;
+    --tw-contrast:;
+    --tw-grayscale:;
+    --tw-hue-rotate:;
+    --tw-invert:;
+    --tw-saturate:;
+    --tw-sepia:;
+    --tw-drop-shadow:;
+    --tw-backdrop-blur:;
+    --tw-backdrop-brightness:;
+    --tw-backdrop-contrast:;
+    --tw-backdrop-grayscale:;
+    --tw-backdrop-hue-rotate:;
+    --tw-backdrop-invert:;
+    --tw-backdrop-opacity:;
+    --tw-backdrop-saturate:;
+    --tw-backdrop-sepia:;
+    --tw-contain-size:;
+    --tw-contain-layout:;
+    --tw-contain-paint:;
+    --tw-contain-style:;
+}
+
+::backdrop {
+    --tw-border-spacing-x: 0;
+    --tw-border-spacing-y: 0;
+    --tw-translate-x: 0;
+    --tw-translate-y: 0;
+    --tw-rotate: 0;
+    --tw-skew-x: 0;
+    --tw-skew-y: 0;
+    --tw-scale-x: 1;
+    --tw-scale-y: 1;
+    --tw-pan-x:;
+    --tw-pan-y:;
+    --tw-pinch-zoom:;
+    --tw-scroll-snap-strictness: proximity;
+    --tw-gradient-from-position:;
+    --tw-gradient-via-position:;
+    --tw-gradient-to-position:;
+    --tw-ordinal:;
+    --tw-slashed-zero:;
+    --tw-numeric-figure:;
+    --tw-numeric-spacing:;
+    --tw-numeric-fraction:;
+    --tw-ring-inset:;
+    --tw-ring-offset-width: 0px;
+    --tw-ring-offset-color: #fff;
+    --tw-ring-color: rgb(59 130 246 / 0.5);
+    --tw-ring-offset-shadow: 0 0 #0000;
+    --tw-ring-shadow: 0 0 #0000;
+    --tw-shadow: 0 0 #0000;
+    --tw-shadow-colored: 0 0 #0000;
+    --tw-blur:;
+    --tw-brightness:;
+    --tw-contrast:;
+    --tw-grayscale:;
+    --tw-hue-rotate:;
+    --tw-invert:;
+    --tw-saturate:;
+    --tw-sepia:;
+    --tw-drop-shadow:;
+    --tw-backdrop-blur:;
+    --tw-backdrop-brightness:;
+    --tw-backdrop-contrast:;
+    --tw-backdrop-grayscale:;
+    --tw-backdrop-hue-rotate:;
+    --tw-backdrop-invert:;
+    --tw-backdrop-opacity:;
+    --tw-backdrop-saturate:;
+    --tw-backdrop-sepia:;
+    --tw-contain-size:;
+    --tw-contain-layout:;
+    --tw-contain-paint:;
+    --tw-contain-style:;
+}
+
+/*
+! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com
+*/
+
+/*
+1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
+2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)
+*/
+
+*,
+::before,
+::after {
+    box-sizing: border-box;
+    /* 1 */
+    border-width: 0;
+    /* 2 */
+    border-style: solid;
+    /* 2 */
+    border-color: #e5e7eb;
+    /* 2 */
+}
+
+::before,
+::after {
+    --tw-content: '';
+}
+
+/*
+1. Use a consistent sensible line-height in all browsers.
+2. Prevent adjustments of font size after orientation changes in iOS.
+3. Use a more readable tab size.
+4. Use the user's configured `sans` font-family by default.
+5. Use the user's configured `sans` font-feature-settings by default.
+6. Use the user's configured `sans` font-variation-settings by default.
+7. Disable tap highlights on iOS
+*/
+
+html,
+:host {
+    line-height: 1.5;
+    /* 1 */
+    -webkit-text-size-adjust: 100%;
+    /* 2 */
+    -moz-tab-size: 4;
+    /* 3 */
+    -o-tab-size: 4;
+    tab-size: 4;
+    /* 3 */
+    font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    /* 4 */
+    font-feature-settings: normal;
+    /* 5 */
+    font-variation-settings: normal;
+    /* 6 */
+    -webkit-tap-highlight-color: transparent;
+    /* 7 */
+}
+
+/*
+1. Remove the margin in all browsers.
+2. Inherit line-height from `html` so users can set them as a class directly on the `html` element.
+*/
+
+body {
+    margin: 0;
+    /* 1 */
+    line-height: inherit;
+    /* 2 */
+}
+
+/*
+1. Add the correct height in Firefox.
+2. Correct the inheritance of border color in Firefox. (https://bugzilla.mozilla.org/show_bug.cgi?id=190655)
+3. Ensure horizontal rules are visible by default.
+*/
+
+hr {
+    height: 0;
+    /* 1 */
+    color: inherit;
+    /* 2 */
+    border-top-width: 1px;
+    /* 3 */
+}
+
+/*
+Add the correct text decoration in Chrome, Edge, and Safari.
+*/
+
+abbr:where([title]) {
+    -webkit-text-decoration: underline dotted;
+    text-decoration: underline dotted;
+}
+
+/*
+Remove the default font size and weight for headings.
+*/
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+/*
+Reset links to optimize for opt-in styling instead of opt-out.
+*/
+
+a {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+/*
+Add the correct font weight in Edge and Safari.
+*/
+
+b,
+strong {
+    font-weight: bolder;
+}
+
+/*
+1. Use the user's configured `mono` font-family by default.
+2. Use the user's configured `mono` font-feature-settings by default.
+3. Use the user's configured `mono` font-variation-settings by default.
+4. Correct the odd `em` font sizing in all browsers.
+*/
+
+code,
+kbd,
+samp,
+pre {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    /* 1 */
+    font-feature-settings: normal;
+    /* 2 */
+    font-variation-settings: normal;
+    /* 3 */
+    font-size: 1em;
+    /* 4 */
+}
+
+/*
+Add the correct font size in all browsers.
+*/
+
+small {
+    font-size: 80%;
+}
+
+/*
+Prevent `sub` and `sup` elements from affecting the line height in all browsers.
+*/
+
+sub,
+sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+
+sub {
+    bottom: -0.25em;
+}
+
+sup {
+    top: -0.5em;
+}
+
+/*
+1. Remove text indentation from table contents in Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=999088, https://bugs.webkit.org/show_bug.cgi?id=201297)
+2. Correct table border color inheritance in all Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=935729, https://bugs.webkit.org/show_bug.cgi?id=195016)
+3. Remove gaps between table borders by default.
+*/
+
+table {
+    text-indent: 0;
+    /* 1 */
+    border-color: inherit;
+    /* 2 */
+    border-collapse: collapse;
+    /* 3 */
+}
+
+/*
+1. Change the font styles in all browsers.
+2. Remove the margin in Firefox and Safari.
+3. Remove default padding in all browsers.
+*/
+
+button,
+input,
+optgroup,
+select,
+textarea {
+    font-family: inherit;
+    /* 1 */
+    font-feature-settings: inherit;
+    /* 1 */
+    font-variation-settings: inherit;
+    /* 1 */
+    font-size: 100%;
+    /* 1 */
+    font-weight: inherit;
+    /* 1 */
+    line-height: inherit;
+    /* 1 */
+    letter-spacing: inherit;
+    /* 1 */
+    color: inherit;
+    /* 1 */
+    margin: 0;
+    /* 2 */
+    padding: 0;
+    /* 3 */
+}
+
+/*
+Remove the inheritance of text transform in Edge and Firefox.
+*/
+
+button,
+select {
+    text-transform: none;
+}
+
+/*
+1. Correct the inability to style clickable types in iOS and Safari.
+2. Remove default button styles.
+*/
+
+button,
+input:where([type='button']),
+input:where([type='reset']),
+input:where([type='submit']) {
+    -webkit-appearance: button;
+    /* 1 */
+    background-color: transparent;
+    /* 2 */
+    background-image: none;
+    /* 2 */
+}
+
+/*
+Use the modern Firefox focus style for all focusable elements.
+*/
+
+:-moz-focusring {
+    outline: auto;
+}
+
+/*
+Remove the additional `:invalid` styles in Firefox. (https://github.com/mozilla/gecko-dev/blob/2f9eacd9d3d995c937b4251a5557d95d494c9be1/layout/style/res/forms.css#L728-L737)
+*/
+
+:-moz-ui-invalid {
+    box-shadow: none;
+}
+
+/*
+Add the correct vertical alignment in Chrome and Firefox.
+*/
+
+progress {
+    vertical-align: baseline;
+}
+
+/*
+Correct the cursor style of increment and decrement buttons in Safari.
+*/
+
+::-webkit-inner-spin-button,
+::-webkit-outer-spin-button {
+    height: auto;
+}
+
+/*
+1. Correct the odd appearance in Chrome and Safari.
+2. Correct the outline style in Safari.
+*/
+
+[type='search'] {
+    -webkit-appearance: textfield;
+    /* 1 */
+    outline-offset: -2px;
+    /* 2 */
+}
+
+/*
+Remove the inner padding in Chrome and Safari on macOS.
+*/
+
+::-webkit-search-decoration {
+    -webkit-appearance: none;
+}
+
+/*
+1. Correct the inability to style clickable types in iOS and Safari.
+2. Change font properties to `inherit` in Safari.
+*/
+
+::-webkit-file-upload-button {
+    -webkit-appearance: button;
+    /* 1 */
+    font: inherit;
+    /* 2 */
+}
+
+/*
+Add the correct display in Chrome and Safari.
+*/
+
+summary {
+    display: list-item;
+}
+
+/*
+Removes the default spacing and border for appropriate elements.
+*/
+
+blockquote,
+dl,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+figure,
+p,
+pre {
+    margin: 0;
+}
+
+fieldset {
+    margin: 0;
+    padding: 0;
+}
+
+legend {
+    padding: 0;
+}
+
+ol,
+ul,
+menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/*
+Reset default styling for dialogs.
+*/
+
+dialog {
+    padding: 0;
+}
+
+/*
+Prevent resizing textareas horizontally by default.
+*/
+
+textarea {
+    resize: vertical;
+}
+
+    /*
+1. Reset the default placeholder opacity in Firefox. (https://github.com/tailwindlabs/tailwindcss/issues/3300)
+2. Set the default placeholder color to the user's configured gray 400 color.
+*/
+
+    input::-moz-placeholder, textarea::-moz-placeholder {
+        opacity: 1;
+        /* 1 */
+        color: #9ca3af;
+        /* 2 */
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+        opacity: 1;
+        /* 1 */
+        color: #9ca3af;
+        /* 2 */
+    }
+
+/*
+Set the default cursor for buttons.
+*/
+
+button,
+[role="button"] {
+    cursor: pointer;
+}
+
+/*
+Make sure disabled buttons don't get the pointer cursor.
+*/
+
+:disabled {
+    cursor: default;
+}
+
+/*
+1. Make replaced elements `display: block` by default. (https://github.com/mozdevs/cssremedy/issues/14)
+2. Add `vertical-align: middle` to align replaced elements more sensibly by default. (https://github.com/jensimmons/cssremedy/issues/14#issuecomment-634934210)
+   This can trigger a poorly considered lint error in some tools but is included by design.
+*/
+
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+    display: block;
+    /* 1 */
+    vertical-align: middle;
+    /* 2 */
+}
+
+/*
+Constrain images and videos to the parent width and preserve their intrinsic aspect ratio. (https://github.com/mozdevs/cssremedy/issues/14)
+*/
+
+img,
+video {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Make elements with the HTML hidden attribute stay hidden by default */
+
+[hidden]:where(:not([hidden="until-found"])) {
+    display: none;
+}
+
+.absolute {
+    position: absolute;
+}
+
+.relative {
+    position: relative;
+}
+
+.inset-0 {
+    inset: 0px;
+}
+
+.bottom-0 {
+    bottom: 0px;
+}
+
+.left-0 {
+    left: 0px;
+}
+
+.right-0 {
+    right: 0px;
+}
+
+.top-0 {
+    top: 0px;
+}
+
+.z-10 {
+    z-index: 10;
+}
+
+.mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.-mb-1 {
+    margin-bottom: -0.25rem;
+}
+
+.-ml-1 {
+    margin-left: -0.25rem;
+}
+
+.-mr-1 {
+    margin-right: -0.25rem;
+}
+
+.-mt-1 {
+    margin-top: -0.25rem;
+}
+
+.mb-1 {
+    margin-bottom: 0.25rem;
+}
+
+.mb-4 {
+    margin-bottom: 1rem;
+}
+
+.mb-6 {
+    margin-bottom: 1.5rem;
+}
+
+.mb-8 {
+    margin-bottom: 2rem;
+}
+
+.mt-1 {
+    margin-top: 0.25rem;
+}
+
+.mt-2 {
+    margin-top: 0.5rem;
+}
+
+.mt-3 {
+    margin-top: 0.75rem;
+}
+
+.mt-4 {
+    margin-top: 1rem;
+}
+
+.mt-6 {
+    margin-top: 1.5rem;
+}
+
+.mt-8 {
+    margin-top: 2rem;
+}
+
+.mt-auto {
+    margin-top: auto;
+}
+
+.flex {
+    display: flex;
+}
+
+.inline-flex {
+    display: inline-flex;
+}
+
+.table {
+    display: table;
+}
+
+.grid {
+    display: grid;
+}
+
+.hidden {
+    display: none;
+}
+
+.size-10 {
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+.size-2 {
+    width: 0.5rem;
+    height: 0.5rem;
+}
+
+.size-8 {
+    width: 2rem;
+    height: 2rem;
+}
+
+.h-1 {
+    height: 0.25rem;
+}
+
+.h-1\.5 {
+    height: 0.375rem;
+}
+
+.h-16 {
+    height: 4rem;
+}
+
+.h-20 {
+    height: 5rem;
+}
+
+.h-4 {
+    height: 1rem;
+}
+
+.h-48 {
+    height: 12rem;
+}
+
+.h-8 {
+    height: 2rem;
+}
+
+.h-9 {
+    height: 2.25rem;
+}
+
+.h-full {
+    height: 100%;
+}
+
+.h-screen {
+    height: 100vh;
+}
+
+.min-h-\[300px\] {
+    min-height: 300px;
+}
+
+.w-16 {
+    width: 4rem;
+}
+
+.w-3\/4 {
+    width: 75%;
+}
+
+.w-4 {
+    width: 1rem;
+}
+
+.w-48 {
+    width: 12rem;
+}
+
+.w-64 {
+    width: 16rem;
+}
+
+.w-full {
+    width: 100%;
+}
+
+.min-w-0 {
+    min-width: 0px;
+}
+
+.max-w-\[1200px\] {
+    max-width: 1200px;
+}
+
+.max-w-\[360px\] {
+    max-width: 360px;
+}
+
+.flex-1 {
+    flex: 1 1 0%;
+}
+
+.shrink-0 {
+    flex-shrink: 0;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(-25%);
+        animation-timing-function: cubic-bezier(0.8,0,1,1);
+    }
+
+    50% {
+        transform: none;
+        animation-timing-function: cubic-bezier(0,0,0.2,1);
+    }
+}
+
+.animate-bounce {
+    animation: bounce 1s infinite;
+}
+
+@keyframes pulse {
+    50% {
+        opacity: .5;
+    }
+}
+
+.animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.grid-cols-1 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+.grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.flex-col {
+    flex-direction: column;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+.items-center {
+    align-items: center;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.gap-1 {
+    gap: 0.25rem;
+}
+
+.gap-1\.5 {
+    gap: 0.375rem;
+}
+
+.gap-2 {
+    gap: 0.5rem;
+}
+
+.gap-3 {
+    gap: 0.75rem;
+}
+
+.gap-4 {
+    gap: 1rem;
+}
+
+.gap-6 {
+    gap: 1.5rem;
+}
+
+.gap-8 {
+    gap: 2rem;
+}
+
+.space-y-6 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-y-reverse: 0;
+    margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
+    margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
+}
+
+.divide-y > :not([hidden]) ~ :not([hidden]) {
+    --tw-divide-y-reverse: 0;
+    border-top-width: calc(1px * calc(1 - var(--tw-divide-y-reverse)));
+    border-bottom-width: calc(1px * var(--tw-divide-y-reverse));
+}
+
+.divide-\[\#cfe5e7\] > :not([hidden]) ~ :not([hidden]) {
+    --tw-divide-opacity: 1;
+    border-color: rgb(207 229 231 / var(--tw-divide-opacity, 1));
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
+
+.overflow-x-auto {
+    overflow-x: auto;
+}
+
+.overflow-y-auto {
+    overflow-y: auto;
+}
+
+.overflow-x-hidden {
+    overflow-x: hidden;
+}
+
+.truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.rounded {
+    border-radius: 0.25rem;
+}
+
+.rounded-full {
+    border-radius: 9999px;
+}
+
+.rounded-lg {
+    border-radius: 0.5rem;
+}
+
+.rounded-xl {
+    border-radius: 0.75rem;
+}
+
+.border {
+    border-width: 1px;
+}
+
+.border-0 {
+    border-width: 0px;
+}
+
+.border-2 {
+    border-width: 2px;
+}
+
+.border-4 {
+    border-width: 4px;
+}
+
+.border-b {
+    border-bottom-width: 1px;
+}
+
+.border-b-4 {
+    border-bottom-width: 4px;
+}
+
+.border-l-4 {
+    border-left-width: 4px;
+}
+
+.border-r {
+    border-right-width: 1px;
+}
+
+.border-r-4 {
+    border-right-width: 4px;
+}
+
+.border-t {
+    border-top-width: 1px;
+}
+
+.border-t-4 {
+    border-top-width: 4px;
+}
+
+.border-\[\#cfe5e7\] {
+    --tw-border-opacity: 1;
+    border-color: rgb(207 229 231 / var(--tw-border-opacity, 1));
+}
+
+.border-red-200 {
+    --tw-border-opacity: 1;
+    border-color: rgb(254 202 202 / var(--tw-border-opacity, 1));
+}
+
+.bg-\[\#f0f9fa\] {
+    --tw-bg-opacity: 1;
+    background-color: rgb(240 249 250 / var(--tw-bg-opacity, 1));
+}
+
+.bg-\[\#f8fbfc\] {
+    --tw-bg-opacity: 1;
+    background-color: rgb(248 251 252 / var(--tw-bg-opacity, 1));
+}
+
+.bg-black {
+    --tw-bg-opacity: 1;
+    background-color: rgb(0 0 0 / var(--tw-bg-opacity, 1));
+}
+
+.bg-blue-100 {
+    --tw-bg-opacity: 1;
+    background-color: rgb(219 234 254 / var(--tw-bg-opacity, 1));
+}
+
+.bg-emerald-500 {
+    --tw-bg-opacity: 1;
+    background-color: rgb(16 185 129 / var(--tw-bg-opacity, 1));
+}
+
+.bg-gray-100 {
+    --tw-bg-opacity: 1;
+    background-color: rgb(243 244 246 / var(--tw-bg-opacity, 1));
+}
+
+.bg-gray-200 {
+    --tw-bg-opacity: 1;
+    background-color: rgb(229 231 235 / var(--tw-bg-opacity, 1));
+}
+
+.bg-green-50 {
+    --tw-bg-opacity: 1;
+    background-color: rgb(240 253 244 / var(--tw-bg-opacity, 1));
+}
+
+.bg-green-500 {
+    --tw-bg-opacity: 1;
+    background-color: rgb(34 197 94 / var(--tw-bg-opacity, 1));
+}
+
+.bg-orange-500 {
+    --tw-bg-opacity: 1;
+    background-color: rgb(249 115 22 / var(--tw-bg-opacity, 1));
+}
+
+.bg-red-50 {
+    --tw-bg-opacity: 1;
+    background-color: rgb(254 242 242 / var(--tw-bg-opacity, 1));
+}
+
+.bg-slate-900 {
+    --tw-bg-opacity: 1;
+    background-color: rgb(15 23 42 / var(--tw-bg-opacity, 1));
+}
+
+.bg-transparent {
+    background-color: transparent;
+}
+
+.bg-white {
+    --tw-bg-opacity: 1;
+    background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
+}
+
+.bg-cover {
+    background-size: cover;
+}
+
+.bg-center {
+    background-position: center;
+}
+
+.p-3 {
+    padding: 0.75rem;
+}
+
+.p-4 {
+    padding: 1rem;
+}
+
+.p-6 {
+    padding: 1.5rem;
+}
+
+.p-8 {
+    padding: 2rem;
+}
+
+.px-2 {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+.px-3 {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+}
+
+.px-4 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.px-6 {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+.px-8 {
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+.py-0\.5 {
+    padding-top: 0.125rem;
+    padding-bottom: 0.125rem;
+}
+
+.py-1 {
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+}
+
+.py-2\.5 {
+    padding-top: 0.625rem;
+    padding-bottom: 0.625rem;
+}
+
+.py-3 {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+}
+
+.py-4 {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.py-5 {
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+}
+
+.py-8 {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.pr-6 {
+    padding-right: 1.5rem;
+}
+
+.pt-4 {
+    padding-top: 1rem;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.font-mono {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+.text-3xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+}
+
+.text-6xl {
+    font-size: 3.75rem;
+    line-height: 1;
+}
+
+.text-8xl {
+    font-size: 6rem;
+    line-height: 1;
+}
+
+.text-\[10px\] {
+    font-size: 10px;
+}
+
+.text-\[11px\] {
+    font-size: 11px;
+}
+
+.text-\[22px\] {
+    font-size: 22px;
+}
+
+.text-base {
+    font-size: 1rem;
+    line-height: 1.5rem;
+}
+
+.text-lg {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+}
+
+.text-sm {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+}
+
+.text-xl {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+}
+
+.text-xs {
+    font-size: 0.75rem;
+    line-height: 1rem;
+}
+
+.font-bold {
+    font-weight: 700;
+}
+
+.font-extrabold {
+    font-weight: 800;
+}
+
+.font-medium {
+    font-weight: 500;
+}
+
+.font-semibold {
+    font-weight: 600;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.leading-none {
+    line-height: 1;
+}
+
+.tracking-tight {
+    letter-spacing: -0.025em;
+}
+
+.tracking-wider {
+    letter-spacing: 0.05em;
+}
+
+.tracking-widest {
+    letter-spacing: 0.1em;
+}
+
+.text-\[\#0d1a1b\] {
+    --tw-text-opacity: 1;
+    color: rgb(13 26 27 / var(--tw-text-opacity, 1));
+}
+
+.text-\[\#4c939a\] {
+    --tw-text-opacity: 1;
+    color: rgb(76 147 154 / var(--tw-text-opacity, 1));
+}
+
+.text-\[\#cfe5e7\] {
+    --tw-text-opacity: 1;
+    color: rgb(207 229 231 / var(--tw-text-opacity, 1));
+}
+
+.text-blue-700 {
+    --tw-text-opacity: 1;
+    color: rgb(29 78 216 / var(--tw-text-opacity, 1));
+}
+
+.text-emerald-600 {
+    --tw-text-opacity: 1;
+    color: rgb(5 150 105 / var(--tw-text-opacity, 1));
+}
+
+/* =========================================================
+   Employees modal (fallback CSS)
+   - Giúp modal "Thêm nhân viên" luôn hi?n th? ??p, k? c? khi Tailwind build thi?u class.
+   - Không ?nh h??ng các trang khác (selector theo #emp-modal).
+   ========================================================= */
+
+#emp-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+}
+
+    #emp-modal.is-open {
+        display: flex;
+    }
+
+    #emp-modal .emp-backdrop {
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.45);
+    }
+
+    #emp-modal .emp-dialog {
+        position: relative;
+        width: min(720px, calc(100vw - 32px));
+        max-height: calc(100vh - 32px);
+        overflow: auto;
+        background: #fff;
+        border-radius: 18px;
+        border: 1px solid #cfe5e7;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+    }
+
+html.dark #emp-modal .emp-dialog {
+    background: #152a2c;
+    border-color: #2a3c3e;
+}
+
+#emp-modal .emp-hd {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 16px 18px;
+    border-bottom: 1px solid #cfe5e7;
+}
+
+html.dark #emp-modal .emp-hd {
+    border-bottom-color: #2a3c3e;
+}
+
+#emp-modal .emp-title {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 800;
+}
+
+#emp-modal .emp-sub {
+    margin-top: 4px;
+    font-size: 12px;
+    color: #4c939a;
+}
+
+#emp-modal .emp-close {
+    border: 0;
+    background: transparent;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 22px;
+    line-height: 36px;
+}
+
+    #emp-modal .emp-close:hover {
+        background: #e7f2f3;
+    }
+
+html.dark #emp-modal .emp-close:hover {
+    background: #1a3538;
+}
+
+#emp-modal .emp-bd {
+    padding: 16px 18px;
+}
+
+#emp-modal .emp-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+}
+
+@media (min-width: 640px) {
+    #emp-modal .emp-grid.emp-grid-2 {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+#emp-modal .emp-field label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 12px;
+    font-weight: 800;
+    color: #4c939a;
+}
+
+#emp-modal .emp-field input {
+    width: 100%;
+    height: 40px;
+    padding: 0 12px;
+    border-radius: 12px;
+    border: 1px solid #cfe5e7;
+    outline: none;
+    font-size: 14px;
+    background: #fff;
+    color: #0d1a1b;
+}
+
+html.dark #emp-modal .emp-field input {
+    background: #152a2c;
+    border-color: #2a3c3e;
+    color: #fff;
+}
+
+#emp-modal .emp-field input:focus {
+    border-color: #54c6cf;
+    box-shadow: 0 0 0 4px rgba(84, 198, 207, 0.18);
+}
+
+#emp-modal .emp-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    height: 40px;
+}
+
+#emp-modal .emp-check {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: #0d1a1b;
+    user-select: none;
+}
+
+html.dark #emp-modal .emp-check {
+    color: #fff;
+}
+
+#emp-modal .emp-check input {
+    width: 16px;
+    height: 16px;
+    accent-color: #54c6cf;
+}
+
+#emp-modal .emp-error {
+    padding: 10px 12px;
+    border-radius: 12px;
+    border: 1px solid rgba(220, 38, 38, 0.3);
+    background: rgba(220, 38, 38, 0.08);
+    color: #dc2626;
+    font-weight: 700;
+    font-size: 13px;
+}
+
+#emp-modal .emp-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 14px 18px;
+    border-top: 1px solid #cfe5e7;
+    background: rgba(231, 242, 243, 0.35);
+}
+
+html.dark #emp-modal .emp-actions {
+    border-top-color: #2a3c3e;
+    background: rgba(26, 53, 56, 0.35);
+}
+
+#emp-modal .btn {
+    height: 40px;
+    padding: 0 14px;
+    border-radius: 12px;
+    border: 1px solid #cfe5e7;
+    background: transparent;
+    cursor: pointer;
+    font-weight: 800;
+}
+
+    #emp-modal .btn:hover {
+        background: #e7f2f3;
+    }
+
+html.dark #emp-modal .btn {
+    border-color: #2a3c3e;
+    color: #fff;
+}
+
+    html.dark #emp-modal .btn:hover {
+        background: #1a3538;
+    }
+
+#emp-modal .btn-primary {
+    border-color: #54c6cf;
+    background: #54c6cf;
+    color: #0d1a1b;
+}
+
+    #emp-modal .btn-primary:hover {
+        filter: brightness(0.95);
+    }
+
+.text-gray-400 {
+    --tw-text-opacity: 1;
+    color: rgb(156 163 175 / var(--tw-text-opacity, 1));
+}
+
+.text-green-700 {
+    --tw-text-opacity: 1;
+    color: rgb(21 128 61 / var(--tw-text-opacity, 1));
+}
+
+.text-red-600 {
+    --tw-text-opacity: 1;
+    color: rgb(220 38 38 / var(--tw-text-opacity, 1));
+}
+
+.text-red-700 {
+    --tw-text-opacity: 1;
+    color: rgb(185 28 28 / var(--tw-text-opacity, 1));
+}
+
+.text-white {
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity, 1));
+}
+
+.text-white\/20 {
+    color: rgb(255 255 255 / 0.2);
+}
+
+.text-white\/40 {
+    color: rgb(255 255 255 / 0.4);
+}
+
+.opacity-70 {
+    opacity: 0.7;
+}
+
+.opacity-80 {
+    opacity: 0.8;
+}
+
+.shadow-\[0_0_15px_rgba\(19\2c 218\2c 236\2c 0\.8\)\] {
+    --tw-shadow: 0 0 15px rgba(19,218,236,0.8);
+    --tw-shadow-colored: 0 0 15px var(--tw-shadow-color);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.shadow-lg {
+    --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.shadow-sm {
+    --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.shadow-emerald-500\/20 {
+    --tw-shadow-color: rgb(16 185 129 / 0.2);
+    --tw-shadow: var(--tw-shadow-colored);
+}
+
+.shadow-orange-500\/20 {
+    --tw-shadow-color: rgb(249 115 22 / 0.2);
+    --tw-shadow: var(--tw-shadow-colored);
+}
+
+.transition-all {
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+}
+
+.transition-colors {
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+}
+
+.transition-transform {
+    transition-property: transform;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+}
+
+.duration-200 {
+    transition-duration: 200ms;
+}
+
+.hover\:bg-\[\#e7f2f3\]:hover {
+    --tw-bg-opacity: 1;
+    background-color: rgb(231 242 243 / var(--tw-bg-opacity, 1));
+}
+
+.hover\:bg-emerald-600:hover {
+    --tw-bg-opacity: 1;
+    background-color: rgb(5 150 105 / var(--tw-bg-opacity, 1));
+}
+
+.hover\:bg-gray-50:hover {
+    --tw-bg-opacity: 1;
+    background-color: rgb(249 250 251 / var(--tw-bg-opacity, 1));
+}
+
+.hover\:bg-orange-600:hover {
+    --tw-bg-opacity: 1;
+    background-color: rgb(234 88 12 / var(--tw-bg-opacity, 1));
+}
+
+.hover\:underline:hover {
+    text-decoration-line: underline;
+}
+
+.focus\:ring-0:focus {
+    --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+    --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(0px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+    box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+}
+
+.active\:scale-95:active {
+    --tw-scale-x: .95;
+    --tw-scale-y: .95;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+@media (min-width: 1024px) {
+    .lg\:grid-cols-2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .dark\:divide-\[\#2a3f41\] > :not([hidden]) ~ :not([hidden]) {
+        --tw-divide-opacity: 1;
+        border-color: rgb(42 63 65 / var(--tw-divide-opacity, 1));
+    }
+
+    .dark\:border-\[\#2a3c3e\] {
+        --tw-border-opacity: 1;
+        border-color: rgb(42 60 62 / var(--tw-border-opacity, 1));
+    }
+
+    .dark\:border-\[\#2a3f41\] {
+        --tw-border-opacity: 1;
+        border-color: rgb(42 63 65 / var(--tw-border-opacity, 1));
+    }
+
+    .dark\:bg-\[\#152a2c\] {
+        --tw-bg-opacity: 1;
+        background-color: rgb(21 42 44 / var(--tw-bg-opacity, 1));
+    }
+
+    .dark\:bg-\[\#162a2c\] {
+        --tw-bg-opacity: 1;
+        background-color: rgb(22 42 44 / var(--tw-bg-opacity, 1));
+    }
+
+    .dark\:bg-\[\#1c3234\] {
+        --tw-bg-opacity: 1;
+        background-color: rgb(28 50 52 / var(--tw-bg-opacity, 1));
+    }
+
+    .dark\:bg-\[\#1e3436\] {
+        --tw-bg-opacity: 1;
+        background-color: rgb(30 52 54 / var(--tw-bg-opacity, 1));
+    }
+
+    .dark\:bg-blue-900\/30 {
+        background-color: rgb(30 58 138 / 0.3);
+    }
+
+    .dark\:bg-gray-700 {
+        --tw-bg-opacity: 1;
+        background-color: rgb(55 65 81 / var(--tw-bg-opacity, 1));
+    }
+
+    .dark\:bg-gray-800 {
+        --tw-bg-opacity: 1;
+        background-color: rgb(31 41 55 / var(--tw-bg-opacity, 1));
+    }
+
+    .dark\:bg-green-900\/30 {
+        background-color: rgb(20 83 45 / 0.3);
+    }
+
+    .dark\:bg-red-900\/20 {
+        background-color: rgb(127 29 29 / 0.2);
+    }
+
+    .dark\:bg-red-900\/30 {
+        background-color: rgb(127 29 29 / 0.3);
+    }
+
+    .dark\:text-\[\#2a3c3e\] {
+        --tw-text-opacity: 1;
+        color: rgb(42 60 62 / var(--tw-text-opacity, 1));
+    }
+
+    .dark\:text-blue-400 {
+        --tw-text-opacity: 1;
+        color: rgb(96 165 250 / var(--tw-text-opacity, 1));
+    }
+
+    .dark\:text-emerald-400 {
+        --tw-text-opacity: 1;
+        color: rgb(52 211 153 / var(--tw-text-opacity, 1));
+    }
+
+    .dark\:text-green-300 {
+        --tw-text-opacity: 1;
+        color: rgb(134 239 172 / var(--tw-text-opacity, 1));
+    }
+
+    .dark\:text-red-300 {
+        --tw-text-opacity: 1;
+        color: rgb(252 165 165 / var(--tw-text-opacity, 1));
+    }
+
+    .dark\:text-white {
+        --tw-text-opacity: 1;
+        color: rgb(255 255 255 / var(--tw-text-opacity, 1));
+    }
+
+    .dark\:hover\:bg-\[\#1a3538\]:hover {
+        --tw-bg-opacity: 1;
+        background-color: rgb(26 53 56 / var(--tw-bg-opacity, 1));
+    }
+
+    .dark\:hover\:bg-\[\#1e3436\]:hover {
+        --tw-bg-opacity: 1;
+        background-color: rgb(30 52 54 / var(--tw-bg-opacity, 1));
+    }
+}
+
+/* =========================================================
+   Scheduling (All) - Color shifts + nicer modal
+   ========================================================= */
+
+/* table tweaks */
+#scha-thead th,
+#scha-tbody td {
+    border-color: #cfe5e7;
+}
+
+#scha-tbody td {
+    padding: 10px 10px;
+    vertical-align: top;
+}
+
+#scha-tbody button.scha-cell {
+    width: 100%;
+    text-align: left;
+    border: 1px solid #cfe5e7;
+    border-radius: 14px;
+    padding: 10px 12px;
+    background: #fff;
+    transition: transform .08s ease, box-shadow .08s ease, background .08s ease;
+}
+
+    #scha-tbody button.scha-cell:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 6px 18px rgba(13, 26, 27, .08);
+    }
+
+.scha-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 900;
+    border: 1px solid transparent;
+    line-height: 1;
+}
+
+.scha-sub {
+    margin-top: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    opacity: .85;
+}
+
+.scha-note {
+    margin-top: 6px;
+    font-size: 12px;
+    opacity: .75;
+}
+/* FIX scheduling modal controls */
+#scha-modal input,
+#scha-modal select,
+#scha-modal textarea {
+    background: #ffffff !important;
+    color: #111827 !important;
+    border: 1px solid #cfe5e7 !important;
+}
+
+    #scha-modal input[type="date"] {
+        -webkit-text-fill-color: #111827 !important;
+        filter: none !important;
+    }
+
+    /* option dropdown (hỗ trợ 1 phần tùy Windows/Chromium) */
+    #scha-modal select option {
+        background: #ffffff !important;
+        color: #111827 !important;
+    }
+
+
+/* OFF (Nghỉ) */
+.scha-off {
+    background: #f8fafc !important;
+    border-color: #e2e8f0 !important;
+}
+
+    .scha-off .scha-pill {
+        background: #e2e8f0;
+        border-color: #cbd5e1;
+        color: #334155;
+    }
+
+/* Shift colors (palette) */
+.scha-c1 {
+    background: #eff6ff !important;
+    border-color: #93c5fd !important;
+}
+
+    .scha-c1 .scha-pill {
+        background: #dbeafe;
+        border-color: #93c5fd;
+        color: #1e3a8a;
+    }
+
+.scha-c2 {
+    background: #ecfdf5 !important;
+    border-color: #6ee7b7 !important;
+}
+
+    .scha-c2 .scha-pill {
+        background: #d1fae5;
+        border-color: #6ee7b7;
+        color: #065f46;
+    }
+
+.scha-c3 {
+    background: #fffbeb !important;
+    border-color: #fcd34d !important;
+}
+
+    .scha-c3 .scha-pill {
+        background: #fef3c7;
+        border-color: #fcd34d;
+        color: #92400e;
+    }
+
+.scha-c4 {
+    background: #f5f3ff !important;
+    border-color: #c4b5fd !important;
+}
+
+    .scha-c4 .scha-pill {
+        background: #ede9fe;
+        border-color: #c4b5fd;
+        color: #4c1d95;
+    }
+
+.scha-c5 {
+    background: #fff1f2 !important;
+    border-color: #fda4af !important;
+}
+
+    .scha-c5 .scha-pill {
+        background: #ffe4e6;
+        border-color: #fda4af;
+        color: #9f1239;
+    }
+
+.scha-c6 {
+    background: #ecfeff !important;
+    border-color: #67e8f9 !important;
+}
+
+    .scha-c6 .scha-pill {
+        background: #cffafe;
+        border-color: #67e8f9;
+        color: #155e75;
+    }
+
+/* Modal: force center + overlay even without Tailwind */
+#scha-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+    #scha-modal.hidden {
+        display: none;
+    }
+
+    #scha-modal .scha-backdrop {
+        position: absolute;
+        inset: 0;
+        background: rgba(0,0,0,.35);
+    }
+
+    #scha-modal .scha-dialog {
+        position: relative;
+        width: 760px;
+        max-width: 96vw;
+        border-radius: 18px;
+        border: 1px solid #cfe5e7;
+        background: #fff;
+        box-shadow: 0 24px 60px rgba(0,0,0,.18);
+        overflow: hidden;
+    }
+
+    #scha-modal .scha-hd {
+        display: flex;
+        align-items: start;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 16px 18px;
+        border-bottom: 1px solid #cfe5e7;
+    }
+
+    #scha-modal .scha-title {
+        font-size: 18px;
+        font-weight: 900;
+    }
+
+    #scha-modal .scha-subtitle {
+        margin-top: 4px;
+        font-size: 13px;
+        color: #4c939a;
+        font-weight: 700;
+    }
+
+    #scha-modal .scha-x {
+        width: 36px;
+        height: 36px;
+        border-radius: 12px;
+        border: 1px solid #cfe5e7;
+        background: #fff;
+        font-weight: 900;
+    }
+
+    #scha-modal .scha-bd {
+        padding: 16px 18px;
+    }
+
+    #scha-modal .scha-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 1.8fr;
+        gap: 14px;
+    }
+
+    #scha-modal label {
+        display: block;
+        font-size: 13px;
+        font-weight: 900;
+        margin-bottom: 8px;
+        color: #0d1a1b;
+    }
+
+    #scha-modal select, #scha-modal input {
+        width: 100%;
+        height: 42px;
+        border-radius: 12px;
+        border: 1px solid #cfe5e7;
+        padding: 0 12px;
+        font-weight: 700;
+        outline: none;
+    }
+
+        #scha-modal select:focus, #scha-modal input:focus {
+            border-color: #38b8c6;
+            box-shadow: 0 0 0 4px rgba(56,184,198,.15);
+        }
+
+    #scha-modal .scha-ft {
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+        padding: 14px 18px;
+        border-top: 1px solid #cfe5e7;
+        background: #f6fbfb;
+    }
+
+    #scha-modal .btn {
+        height: 40px;
+        border-radius: 12px;
+        padding: 0 14px;
+        border: 1px solid #cfe5e7;
+        background: #fff;
+        font-weight: 900;
+    }
+
+    #scha-modal .btn-primary {
+        border-color: transparent;
+        background: #38b8c6;
+        color: #fff;
+    }
+
+    #scha-modal .btn-danger {
+        border-color: #fecaca;
+        color: #b91c1c;
+        background: #fff;
+    }
+
+    #scha-modal .btn:hover {
+        filter: brightness(.98);
+    }
+
+/* === (1) THÊM CSS CHO “THEO CA” (đặt vào <style> của scheduling_all.html hoặc file css chung) === */
+.shift-cell {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-items: flex-start;
+}
+
+.emp-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 8px;
+    border-radius: 999px;
+    font-size: 12px;
+    line-height: 1;
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
+    max-width: 100%;
+}
+
+    .emp-pill .emp-name {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 180px; /* tuỳ UI */
+    }
+
+    .emp-pill:hover {
+        filter: brightness(0.95);
+    }
+
+    .emp-pill:active {
+        transform: translateY(1px);
+    }
+
+
+.pr-toolbar {
+    display: flex;
+    gap: 12px;
+    align-items: flex-end;
+    flex-wrap: nowrap;
+}
+
+    .pr-toolbar .pr-field {
+        flex: 0 0 220px;
+    }
+
+    .pr-toolbar .pr-emp {
+        flex: 1 1 auto;
+        min-width: 260px;
+    }
+
+.pr-actions {
+    display: flex;
+    gap: 12px;
+    flex: 0 0 auto;
+    flex-wrap: nowrap;
+}
+
+    .pr-actions button {
+        white-space: nowrap;
+    }
+
+/* Nếu màn hình nhỏ quá thì cho scroll ngang thay vì rớt xuống dòng */
+.pr-toolbar-wrap {
+    overflow-x: auto;
+    padding-bottom: 2px;
+}
+
+/*payroll_muti*/
+
+/*:root {
+    --bg: #0b1415;
+    --card: #0f1e20;
+    --card2: #0d1a1b;
+    --border: #234042;
+    --muted: #8ab8bd;
+    --text: #e8f6f7;
+    --accent: #75d5dc;
+    --danger: #ff6b6b;
+    --ok: #60d394;
+}*/
+
+.paymul {
+    margin: 0;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    border-radius: 14px;
+}
+
+.wrap {
+    padding: 16px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+}
+
+.title {
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.sub {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 12px;
+}
+
+@media (max-width: 980px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 14px;
+    box-shadow: 0 8px 24px rgba(0,0,0,.25);
+}
+
+.row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.btn {
+    height: 38px;
+    padding: 0 12px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: #102427;
+    color: var(--text);
+    cursor: pointer;
+    font-weight: 700;
+}
+
+    .btn:hover {
+        filter: brightness(1.05);
+    }
+
+    .btn.primary {
+        background: var(--accent);
+        color: #062022;
+        border-color: transparent;
+    }
+
+    .btn.danger {
+        background: transparent;
+        color: var(--danger);
+        border-color: rgba(255,107,107,.4);
+    }
+
+    .btn.ghost {
+        background: transparent;
+    }
+
+    .btn:disabled {
+        opacity: .55;
+        cursor: not-allowed;
+    }
+
+.monthbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.monthname {
+    font-weight: 900;
+    letter-spacing: .2px;
+}
+
+.legend {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.cal {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+}
+
+.dow {
+    text-align: center;
+    font-size: 11px;
+    color: var(--muted);
+    font-weight: 800;
+    padding: 6px 0;
+}
+
+.day {
+    user-select: none;
+    border: 1px solid var(--border);
+    background: var(--card2);
+    border-radius: 12px;
+    padding: 10px 8px;
+    min-height: 62px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+    .day:hover {
+        filter: brightness(1.08);
+    }
+
+    .day.muted {
+        opacity: .35;
+    }
+
+    .day .dnum {
+        font-weight: 900;
+        font-size: 14px;
+    }
+
+    .day .tag {
+        font-size: 11px;
+        color: var(--muted);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .day.selected {
+        outline: 2px solid rgba(117,213,220,.55);
+    }
+
+    .day.has-mul {
+        background: rgba(117,213,220,.14);
+        border-color: rgba(117,213,220,.35);
+    }
+
+.paymul .form {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+.paymul label {
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 800;
+}
+
+.paymul input,
+.paymul select {
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: #0c1718;
+    color: var(--text);
+    padding: 0 10px;
+    outline: none;
+}
+
+    .paymul input:focus,
+    .paymul select:focus {
+        box-shadow: 0 0 0 3px rgba(117,213,220,.18);
+    }
+
+.paymul .status {
+    margin-top: 10px;
+    font-size: 12px;
+    color: var(--muted);
+    min-height: 18px;
+}
+
+    .paymul .status.ok {
+        color: var(--ok);
+    }
+
+    .paymul .status.err {
+        color: var(--danger);
+    }
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px 8px;
+    border-bottom: 1px solid rgba(35,64,66,.65);
+    font-size: 13px;
+}
+
+th {
+    text-align: left;
+    color: var(--muted);
+    font-size: 12px;
+    letter-spacing: .2px;
+}
+
+td.actions {
+    text-align: right;
+    white-space: nowrap;
+}
+
+.pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 3px 8px;
+    border-radius: 999px;
+    border: 1px solid rgba(117,213,220,.3);
+    background: rgba(117,213,220,.12);
+    font-weight: 800;
+    font-size: 12px;
+}
+
+/* ===== PAYROLL_MULTI (paymul) - FORCE LIGHT THEME, scoped only ===== */
+.paymul {
+    color-scheme: light;
+    --bg: #ffffff;
+    --card: #ffffff;
+    --card2: #ffffff;
+    --border: #e5e7eb;
+    --muted: #6b7280;
+    --text: #111827;
+    --accent: #2563eb;
+    --danger: #dc2626;
+    --ok: #16a34a;
+    background: var(--bg);
+    color: var(--text);
+    border-radius: 14px;
+}
+
+    /* scope lại các class chung để không “đè” trang khác */
+    .paymul .wrap {
+        padding: 16px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .paymul .top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-bottom: 12px;
+    }
+
+    .paymul .title {
+        font-size: 18px;
+        font-weight: 800;
+    }
+
+    .paymul .sub {
+        color: var(--muted);
+        font-size: 12px;
+    }
+
+    .paymul .grid {
+        display: grid;
+        grid-template-columns: 1.2fr 1fr;
+        gap: 12px;
+    }
+
+@media (max-width:980px) {
+    .paymul .grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.paymul .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 14px;
+    box-shadow: 0 8px 24px rgba(0,0,0,.10);
+}
+
+/* nút */
+.paymul .btn {
+    height: 38px;
+    padding: 0 12px;
+    border-radius: 10px;
+    border: 1px solid #d1d5db;
+    background: #f3f4f6;
+    color: #111827;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+    .paymul .btn:hover {
+        filter: brightness(0.98);
+    }
+
+    .paymul .btn.primary {
+        background: var(--accent);
+        color: #ffffff;
+        border-color: var(--accent);
+    }
+
+    .paymul .btn.danger {
+        background: #ffffff;
+        color: var(--danger);
+        border-color: #fecaca;
+    }
+
+    .paymul .btn.ghost {
+        background: #ffffff;
+    }
+
+/* lịch */
+.paymul .dow {
+    text-align: center;
+    font-size: 11px;
+    color: var(--muted);
+    font-weight: 800;
+    padding: 6px 0;
+}
+
+.paymul .day {
+    user-select: none;
+    border: 1px solid var(--border);
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 10px 8px;
+    min-height: 62px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+    .paymul .day:hover {
+        background: #f9fafb;
+    }
+
+    .paymul .day.muted {
+        opacity: 1;
+    }
+
+        .paymul .day.muted .dnum,
+        .paymul .day.muted .tag {
+            color: #9ca3af !important;
+        }
+
+    .paymul .day .dnum {
+        font-weight: 900;
+        font-size: 14px;
+        color: #111827;
+    }
+
+    .paymul .day .tag {
+        font-size: 11px;
+        color: var(--muted);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .paymul .day.selected {
+        outline: 2px solid rgba(37,99,235,.30);
+    }
+
+    .paymul .day.has-mul {
+        background: #ecfdf5;
+        border-color: #86efac;
+    }
+
+/* label + input/select/textarea (đây là phần bạn đang bị nền tối) */
+.paymul label {
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 800;
+}
+
+.paymul input,
+.paymul select,
+.paymul textarea {
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid #d1d5db;
+    background: #ffffff;
+    color: #111827;
+    padding: 0 10px;
+    outline: none;
+}
+
+.paymul textarea {
+    height: auto;
+    padding: 10px;
+}
+
+    .paymul input::placeholder,
+    .paymul textarea::placeholder {
+        color: #9ca3af;
+    }
+
+.paymul input[type="date"] {
+    -webkit-text-fill-color: #111827;
+    filter: none !important;
+}

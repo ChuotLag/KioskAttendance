@@ -1,0 +1,85 @@
+﻿<div class="max-w-[1200px] mx-auto space-y-6">
+    <!-- Stats / KPI Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <div class="flex flex-col gap-3 rounded-xl p-6 bg-white dark:bg-[#152a2c] border border-[#cfe5e7] dark:border-[#2a3c3e] shadow-sm hover:shadow-md transition-shadow">
+            <div class="flex justify-between items-start">
+                <p class="text-[#4c939a] text-sm font-semibold uppercase tracking-wide">Đã check-in</p>
+                <span class="material-symbols-outlined text-primary">how_to_reg</span>
+            </div>
+            <div class="flex items-end gap-2">
+                <p id="kpi-checkedin" class="text-[#0d1a1b] dark:text-white text-3xl font-bold leading-none">--</p>
+                <p class="text-[#078834] text-xs font-bold pb-1 flex items-center">
+                    <span class="material-symbols-outlined text-sm">trending_up</span>
+                </p>
+            </div>
+        </div>
+        <div class="flex flex-col gap-3 rounded-xl p-6 bg-white dark:bg-[#152a2c] border border-primary/30 shadow-sm hover:shadow-md transition-shadow ring-1 ring-primary/20">
+            <div class="flex justify-between items-start">
+                <p class="text-[#4c939a] text-sm font-semibold uppercase tracking-wide">Đang làm</p>
+                <span class="material-symbols-outlined text-primary">groups</span>
+            </div>
+            <div class="flex items-end gap-2">
+                <p id="kpi-working" class="text-[#0d1a1b] dark:text-white text-3xl font-bold leading-none">--</p>
+                <p class="text-[#e73108] text-xs font-bold pb-1 flex items-center">
+                    <span class="material-symbols-outlined text-sm">trending_down</span>
+                </p>
+            </div>
+        </div>
+<!--        <div class="flex flex-col gap-3 rounded-xl p-6 bg-white dark:bg-[#152a2c] border border-[#cfe5e7] dark:border-[#2a3c3e] shadow-sm hover:shadow-md transition-shadow">
+            <div class="flex justify-between items-start">
+                <p class="text-[#4c939a] text-sm font-semibold uppercase tracking-wide">Chưa check-in</p>
+                <span class="material-symbols-outlined text-orange-400">event_busy</span>
+            </div>
+            <div class="flex items-end gap-2">
+                <p id="kpi-notcheckedin" class="text-[#0d1a1b] dark:text-white text-3xl font-bold leading-none">--</p>
+                <p class="text-[#078834] text-xs font-bold pb-1 flex items-center">
+                    <span class="material-symbols-outlined text-sm">trending_up</span> 
+                </p>
+            </div>
+        </div>-->
+        <div class="flex flex-col gap-3 rounded-xl p-6 bg-white dark:bg-[#152a2c] border border-[#cfe5e7] dark:border-[#2a3c3e] shadow-sm hover:shadow-md transition-shadow">
+            <div class="flex justify-between items-start">
+                <p class="text-[#4c939a] text-sm font-semibold uppercase tracking-wide">Tổng giờ làm</p>
+                <span class="material-symbols-outlined text-[#4c939a]">timer</span>
+            </div>
+            <div class="flex items-end gap-2">
+                <p id="kpi-totalhours" class="text-[#0d1a1b] dark:text-white text-3xl font-bold leading-none">--h</p>
+                <p class="text-[#078834] text-xs font-bold pb-1 flex items-center">
+                    <span class="material-symbols-outlined text-sm">trending_up</span> 
+                </p>
+            </div>
+        </div>
+    </div>
+    <!-- SectionHeader -->
+    <div class="flex items-center justify-between mb-4">
+        <h2 class="text-[#0d1a1b] dark:text-white text-xl font-bold tracking-tight px-1">Nhật ký chấm công</h2>
+        <!--<button class="text-primary text-sm font-bold hover:underline">View all reports</button>-->
+    </div>
+    <!-- Table (DataGridView style) -->
+    <div class="bg-white dark:bg-[#152a2c] rounded-xl border border-[#cfe5e7] dark:border-[#2a3c3e] overflow-hidden shadow-sm">
+        <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse">
+                <thead>
+                    <tr class="bg-background-light dark:bg-[#102022] border-b border-[#cfe5e7] dark:border-[#2a3c3e]">
+                        <th class="px-6 py-4 text-[#4c939a] text-xs font-bold uppercase tracking-wider w-1/4">Nhân viên</th>
+                        <th class="px-6 py-4 text-[#4c939a] text-xs font-bold uppercase tracking-wider">Check In/ Check out</th>
+                        <th class="px-6 py-4 text-[#4c939a] text-xs font-bold uppercase tracking-wider">Thời gian thực hiện</th>
+                        <th class="px-6 py-4 text-[#4c939a] text-xs font-bold uppercase tracking-wider">Quầy</th>
+                        <th class="px-6 py-4 text-[#4c939a] text-xs font-bold uppercase tracking-wider">Tình trạng</th>
+                    </tr>
+                </thead>
+                <tbody id="recent-activity-body" class="divide-y divide-[#cfe5e7] dark:divide-[#2a3c3e]"></tbody>
+            </table>
+        </div>
+        <div class="bg-gray-50 dark:bg-[#102022] px-6 py-3 border-t border-[#cfe5e7] dark:border-[#2a3c3e] flex items-center justify-between text-xs text-[#4c939a]">
+         <!--   <div class="flex gap-2">
+                <button class="p-1 rounded hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors">
+                    <span class="material-symbols-outlined text-[18px]">chevron_left</span>
+                </button>
+                <button class="p-1 rounded hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors">
+                    <span class="material-symbols-outlined text-[18px]">chevron_right</span>
+                </button>
+            </div>-->
+        </div>
+    </div>
+</div>

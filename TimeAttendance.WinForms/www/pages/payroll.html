@@ -1,0 +1,189 @@
+<!-- Payroll Page -->
+<div class="max-w-6xl mx-auto">
+    <!--    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
+            <div>
+                <h3 class="text-xl font-bold tracking-tight">Payroll</h3>
+                <p class="text-sm text-[#4c939a] mt-1">
+                    Tính tự động: <b>Tổng = Lương/giờ × Số giờ</b> &nbsp;•&nbsp; <b>Phạt trễ = Phút trễ × 1,000</b> &nbsp;•&nbsp; <b>Thực nhận = Tổng − Phạt</b>
+                </p>
+            </div>
+
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-end gap-3">
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    <div>
+                        <label class="block text-xs font-bold text-[#4c939a] mb-1">Từ ngày</label>
+                        <input id="pr-from" type="date"
+                               class="w-full h-10 px-3 rounded-lg border border-[#cfe5e7] dark:border-[#2a3c3e] bg-white dark:bg-[#152a2c] text-sm outline-none focus:ring-2 focus:ring-primary/30" />
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-[#4c939a] mb-1">Đến ngày</label>
+                        <input id="pr-to" type="date"
+                               class="w-full h-10 px-3 rounded-lg border border-[#cfe5e7] dark:border-[#2a3c3e] bg-white dark:bg-[#152a2c] text-sm outline-none focus:ring-2 focus:ring-primary/30" />
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-[#4c939a] mb-1">Nhân viên</label>
+                        <select id="pr-emp"
+                                class="w-full h-10 px-3 rounded-lg border border-[#cfe5e7] dark:border-[#2a3c3e] bg-white dark:bg-[#152a2c] text-sm outline-none focus:ring-2 focus:ring-primary/30">
+                            <option value="">Tất cả</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button id="pr-load"
+                        class="h-10 px-4 rounded-lg bg-primary text-[#0d1a1b] text-sm font-bold transition-transform active:scale-95 inline-flex items-center justify-center gap-2">
+                    <span class="material-symbols-outlined text-[20px]">sync</span>
+                    Tải dữ liệu
+                </button>
+
+                <button id="pr-export"
+                        class="h-10 px-4 rounded-lg bg-[#e7f2f3] text-[#0d1a1b] text-sm font-bold border border-[#cfe5e7] transition-transform active:scale-95 inline-flex items-center justify-center gap-2">
+                    <span class="material-symbols-outlined text-[20px]">download</span>
+                    Xuất Excel
+                </button>
+
+
+                <button id="pr-export-emp"
+                        class="h-10 px-4 rounded-lg bg-[#fff7ed] text-[#0d1a1b] text-sm font-bold border border-[#fed7aa] transition-transform active:scale-95 inline-flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed">
+                    <span class="material-symbols-outlined text-[20px]">person</span>
+                    Xuất Nhân viên đã chọn
+                </button>
+            </div>
+        </div>-->
+    <!-- Filters + Actions: gom 1 dòng trên màn hình rộng -->
+    <!-- Filters + Actions: luôn 1 dòng -->
+    <div class="mt-4 pr-toolbar-wrap">
+        <div class="pr-toolbar">
+
+            <div class="pr-field">
+                <label class="block text-xs font-bold text-[#4c939a] mb-1">Từ ngày</label>
+                <input id="pr-from" type="date"
+                       class="w-full h-10 px-3 rounded-lg border border-[#cfe5e7] bg-white text-sm outline-none" />
+            </div>
+
+            <div class="pr-field">
+                <label class="block text-xs font-bold text-[#4c939a] mb-1">Đến ngày</label>
+                <input id="pr-to" type="date"
+                       class="w-full h-10 px-3 rounded-lg border border-[#cfe5e7] bg-white text-sm outline-none" />
+            </div>
+
+            <div class="pr-emp">
+                <label class="block text-xs font-bold text-[#4c939a] mb-1">Nhân viên</label>
+                <select id="pr-emp"
+                        class="w-full h-10 px-3 rounded-lg border border-[#cfe5e7] bg-white text-sm outline-none">
+                    <option value="">Tất cả</option>
+                </select>
+            </div>
+
+            <div class="pr-actions">
+                <button id="pr-load"
+                        class="h-10 px-4 rounded-lg bg-primary text-[#0d1a1b] text-sm font-bold inline-flex items-center gap-2">
+                    <span class="material-symbols-outlined text-[20px]">sync</span>
+                    Tải dữ liệu
+                </button>
+
+                <button id="pr-export"
+                        class="h-10 px-4 rounded-lg bg-[#e7f2f3] text-[#0d1a1b] text-sm font-bold border border-[#cfe5e7] inline-flex items-center gap-2">
+                    <span class="material-symbols-outlined text-[20px]">download</span>
+                    Xuất Excel
+                </button>
+
+                <button id="pr-export-emp"
+                        class="h-10 px-4 rounded-lg bg-[#fff7ed] text-[#0d1a1b] text-sm font-bold border border-[#fed7aa] inline-flex items-center gap-2">
+                    <span class="material-symbols-outlined text-[20px]">person</span>
+                    Xuất NV đã chọn
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div id="pr-status" class="hidden mt-4 p-4 rounded-xl border"></div>
+
+    <!-- Summary cards -->
+    <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+        <div class="p-4 rounded-2xl border border-[#cfe5e7] dark:border-[#2a3c3e] bg-white dark:bg-[#152a2c] shadow-sm">
+            <p class="text-xs font-bold text-[#4c939a] uppercase tracking-wider">Tổng giờ</p>
+            <p id="pr-kpi-hours" class="mt-2 text-2xl font-extrabold">0.0h</p>
+        </div>
+        <div class="p-4 rounded-2xl border border-[#cfe5e7] dark:border-[#2a3c3e] bg-white dark:bg-[#152a2c] shadow-sm">
+            <p class="text-xs font-bold text-[#4c939a] uppercase tracking-wider">Tổng trễ</p>
+            <p id="pr-kpi-late" class="mt-2 text-2xl font-extrabold">0 phút</p>
+        </div>
+        <div class="p-4 rounded-2xl border border-[#cfe5e7] dark:border-[#2a3c3e] bg-white dark:bg-[#152a2c] shadow-sm">
+            <p class="text-xs font-bold text-[#4c939a] uppercase tracking-wider">Tổng</p>
+            <p id="pr-kpi-gross" class="mt-2 text-2xl font-extrabold">0</p>
+        </div>
+        <!--<div class="p-4 rounded-2xl border border-[#cfe5e7] dark:border-[#2a3c3e] bg-white dark:bg-[#152a2c] shadow-sm">
+            <p class="text-xs font-bold text-[#4c939a] uppercase tracking-wider">Phạt trễ</p>
+            <p id="pr-kpi-penalty" class="mt-2 text-2xl font-extrabold">0</p>
+        </div>
+        <div class="p-4 rounded-2xl border border-[#cfe5e7] dark:border-[#2a3c3e] bg-white dark:bg-[#152a2c] shadow-sm">
+            <p class="text-xs font-bold text-[#4c939a] uppercase tracking-wider">Thực nhận</p>
+            <p id="pr-kpi-net" class="mt-2 text-2xl font-extrabold">0</p>
+        </div>-->
+
+        <div class="p-4 rounded-2xl border border-[#cfe5e7] dark:border-[#2a3c3e] bg-white dark:bg-[#152a2c] shadow-sm">
+            <p class="text-xs font-bold text-[#4c939a] uppercase tracking-wider">Tổng phạt tháng</p>
+            <p class="text-[11px] text-[#4c939a] mt-1">Từ đầu tháng đến hôm nay</p>
+            <p id="pr-kpi-mtd-penalty" class="mt-2 text-2xl font-extrabold">0</p>
+        </div>
+
+        <div class="p-4 rounded-2xl border border-[#cfe5e7] dark:border-[#2a3c3e] bg-white dark:bg-[#152a2c] shadow-sm">
+            <p class="text-xs font-bold text-[#4c939a] uppercase tracking-wider">Tổng thực nhận tháng</p>
+            <p class="text-[11px] text-[#4c939a] mt-1">Từ đầu tháng đến hôm nay</p>
+            <p id="pr-kpi-mtd-net" class="mt-2 text-2xl font-extrabold">0</p>
+        </div>
+
+    </div>
+
+    <!-- Table -->
+    <div class="mt-6 rounded-xl border border-[#cfe5e7] dark:border-[#2a3c3e] overflow-hidden bg-white dark:bg-[#152a2c]">
+        <div class="px-6 py-4 border-b border-[#cfe5e7] dark:border-[#2a3c3e] flex items-center justify-between gap-4">
+            <div>
+                <p class="text-sm font-bold">Chi tiết ngày công</p>
+                <p class="text-xs text-[#4c939a] mt-1">Mỗi dòng = 1 bản ghi chấm công (theo ca).</p>
+            </div>
+
+            <!--    <div class="relative">
+            <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[#4c939a]">search</span>
+            <input id="pr-search" type="text" placeholder="Lọc nhanh: mã / tên / ca"
+                   class="w-72 pl-10 pr-3 h-10 rounded-lg border border-[#cfe5e7] dark:border-[#2a3c3e] bg-white dark:bg-[#152a2c] text-sm outline-none focus:ring-2 focus:ring-primary/30" />
+        </div>-->
+            <div class="w-72 h-10 flex items-center rounded-lg border border-[#cfe5e7] dark:border-[#2a3c3e] bg-white dark:bg-[#152a2c] overflow-hidden">
+                <span class="material-symbols-outlined px-3 text-[#4c939a] border-r border-[#cfe5e7] dark:border-[#2a3c3e]">
+                    search
+                </span>
+
+                <input id="pr-search" type="text" placeholder="Lọc nhanh: mã / tên / ca"
+                       class="flex-1 h-full px-3 bg-transparent text-sm outline-none focus:ring-0" />
+            </div>
+
+        </div>
+
+        <div class="overflow-x-auto">
+            <table class="min-w-full text-sm">
+                <thead class="bg-[#e7f2f3] dark:bg-[#1a3538]">
+                    <tr>
+                        <th class="px-6 py-3 text-left font-bold text-[#4c939a]">Ngày</th>
+                        <th class="px-6 py-3 text-left font-bold text-[#4c939a]">Mã</th>
+                        <th class="px-6 py-3 text-left font-bold text-[#4c939a]">Họ tên</th>
+                        <th class="px-6 py-3 text-left font-bold text-[#4c939a]">Ca</th>
+                        <th class="px-6 py-3 text-left font-bold text-[#4c939a]">Check-in</th>
+                        <th class="px-6 py-3 text-left font-bold text-[#4c939a]">Check-out</th>
+                        <th class="px-6 py-3 text-right font-bold text-[#4c939a]">Giờ làm</th>
+                        <th class="px-6 py-3 text-right font-bold text-[#4c939a]">Trễ (phút)</th>
+                        <th class="px-6 py-3 text-right font-bold text-[#4c939a]">Tổng</th>
+                        <th class="px-6 py-3 text-right font-bold text-[#4c939a]">Phạt</th>
+                        <th class="px-6 py-3 text-right font-bold text-[#4c939a]">Thực nhận</th>
+                    </tr>
+                </thead>
+                <tbody id="pr-tbody" class="divide-y divide-[#cfe5e7] dark:divide-[#2a3c3e]"></tbody>
+            </table>
+        </div>
+
+        <div class="px-6 py-4 text-xs text-[#4c939a]">
+            Ghi chú: “Trễ” được tính theo <b>phút</b> từ giờ bắt đầu ca đến giờ check-in. Mỗi 1 phút trễ trừ <b>1,000</b>.
+        </div>
+    </div>
+</div>

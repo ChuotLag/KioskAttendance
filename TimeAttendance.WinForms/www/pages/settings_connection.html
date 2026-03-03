@@ -1,0 +1,85 @@
+<div class="max-w-3xl mx-auto">
+  <div class="flex items-start justify-between gap-4">
+    <div>
+      <h3 class="text-xl font-bold">Cài đặt kết nối (nhập IP)</h3>
+      <p class="text-sm text-[#4c939a] mt-1">
+        Dùng khi quán đổi mạng / đổi IP. Nhập IP + Port mới và bấm <b>Lưu</b>.
+        QR sẽ dùng địa chỉ mới (không cần build lại exe).
+      </p>
+    </div>
+  </div>
+
+  <div class="mt-6 grid gap-6">
+    <div class="p-6 rounded-2xl border border-[#cfe5e7] bg-white">
+      <div class="flex items-center gap-2 mb-4">
+        <span class="material-symbols-outlined text-[#4c939a]">wifi</span>
+        <h4 class="font-bold">Địa chỉ API</h4>
+      </div>
+
+      <div id="conn-status" class="mb-4 hidden"></div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-sm font-semibold mb-1">IP / Host</label>
+          <input id="conn-host" type="text"
+                 class="w-full px-4 py-3 rounded-xl border border-[#cfe5e7] focus:outline-none focus:ring-2 focus:ring-primary/30"
+                 placeholder="VD: 192.168.1.50" />
+          <p class="text-xs text-[#4c939a] mt-1">Đây là IP LAN của máy đang chạy API (port 5000).</p>
+        </div>
+
+        <div>
+          <label class="block text-sm font-semibold mb-1">Port</label>
+          <input id="conn-port" type="number" min="1" max="65535"
+                 class="w-full px-4 py-3 rounded-xl border border-[#cfe5e7] focus:outline-none focus:ring-2 focus:ring-primary/30"
+                 placeholder="5000" />
+        </div>
+
+        <div class="md:col-span-2">
+          <label class="block text-sm font-semibold mb-1">Giao thức</label>
+          <div class="flex items-center gap-5">
+            <label class="inline-flex items-center gap-2 text-sm font-semibold">
+              <input type="radio" name="conn-scheme" value="http" checked>
+              http
+            </label>
+            <label class="inline-flex items-center gap-2 text-sm font-semibold">
+              <input type="radio" name="conn-scheme" value="https">
+              https
+            </label>
+          </div>
+        </div>
+
+        <div class="md:col-span-2">
+          <label class="block text-sm font-semibold mb-1">Preview</label>
+          <input id="conn-preview" type="text" readonly
+                 class="w-full px-4 py-3 rounded-xl border border-[#cfe5e7] bg-[#f5fbfc]" />
+          <p class="text-xs text-[#4c939a] mt-1">QR sẽ dùng preview này để điện thoại mở trang chấm công.</p>
+        </div>
+      </div>
+
+      <div class="mt-5 flex flex-wrap gap-3">
+        <button id="btn-conn-test" type="button"
+                class="h-11 px-5 rounded-xl border border-[#cfe5e7] bg-white font-semibold text-sm hover:bg-[#f5fbfc]">
+          Kiểm tra kết nối
+        </button>
+
+        <button id="btn-conn-save" type="button"
+                class="h-11 px-5 rounded-xl bg-primary text-[#0d1a1b] font-bold text-sm transition-transform active:scale-95">
+          Lưu
+        </button>
+
+        <button id="btn-conn-reset" type="button"
+                class="h-11 px-5 rounded-xl border border-[#cfe5e7] bg-white font-semibold text-sm hover:bg-[#f5fbfc]">
+          Mặc định (localhost)
+        </button>
+      </div>
+
+      <div class="mt-4 p-4 rounded-xl border border-[#cfe5e7] bg-white">
+        <p class="text-sm font-semibold mb-1">Gợi ý</p>
+        <ul class="text-sm text-[#4c939a] list-disc ml-5 space-y-1">
+          <li>Nếu điện thoại không quét được QR, hãy kiểm tra máy chạy API và WiFi cùng mạng LAN.</li>
+          <li>Nếu đổi router / đổi WiFi, IP LAN có thể đổi — chỉ cần cập nhật lại ở đây.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

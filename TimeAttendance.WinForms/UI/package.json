@@ -1,0 +1,16 @@
+{
+  "name": "ui",
+  "version": "1.0.0",
+  "private": true,
+  "license": "ISC",
+  "type": "commonjs",
+  "scripts": {
+    "dev": "tailwindcss -i ./assets/css/input.css -o ../www/assets/css/app.css --watch",
+    "build": "tailwindcss -i ./assets/css/input.css -o ../www/assets/css/app.css --minify"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.23",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.17"
+  }
+}

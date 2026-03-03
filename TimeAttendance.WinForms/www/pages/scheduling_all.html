@@ -1,0 +1,82 @@
+﻿
+
+
+<div class="px-6 py-6">
+    <div class="flex items-center justify-between gap-4">
+        <div>
+            <div class="text-xl font-extrabold">Lịch tuần (tất cả nhân viên)</div>
+            <div id="scha-week-label" class="text-sm text-slate-500 mt-1"></div>
+
+            <div class="mt-3 inline-flex rounded-xl border border-[#cfe5e7] overflow-hidden bg-white">
+                <button id="scha-week-current" class="h-9 px-4 font-extrabold text-sm border-r border-[#cfe5e7]">Tuần hiện tại</button>
+                <button id="scha-week-next" class="h-9 px-4 font-extrabold text-sm">Tuần tiếp theo</button>
+            </div>
+        </div>
+
+        <div class="flex items-center gap-3">
+
+            <div class="inline-flex rounded-xl border border-[#cfe5e7] overflow-hidden bg-white">
+                <button id="scha-view-emp" class="h-10 px-4 font-extrabold text-sm border-r border-[#cfe5e7]">Theo nhân viên</button>
+                <button id="scha-view-shift" class="h-10 px-4 font-extrabold text-sm">Theo ca</button>
+            </div>
+            <label class="text-sm font-semibold text-slate-600">
+                <input id="scha-include-inactive" type="checkbox" />
+                Hiện cả nhân viên đã nghỉ
+            </label>
+
+            <button id="scha-export-excel" class="h-10 px-4 rounded-xl border border-[#cfe5e7] font-bold hover:bg-[#e7f2f3]">
+                Xuất Excel
+            </button>
+
+            <button id="scha-reload" class="h-10 px-4 rounded-xl border border-[#cfe5e7] font-bold hover:bg-[#e7f2f3]">
+                Tải lại
+            </button>
+        </div>
+    </div>
+
+    <div id="scha-status" class="hidden mt-4 p-4 rounded-xl border text-sm font-semibold"></div>
+
+    <div class="mt-6 border border-[#cfe5e7] rounded-2xl overflow-auto bg-white" style="max-height: 70vh;">
+        <table class="w-full text-sm">
+            <thead id="scha-thead"></thead>
+            <tbody id="scha-tbody"></tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Modal xếp ca -->
+<div id="scha-modal" class="hidden">
+    <div class="scha-backdrop" data-scha-close="1"></div>
+
+    <div class="scha-dialog">
+        <div class="scha-hd">
+            <div>
+                <div class="scha-title">Xếp ca</div>
+                <div id="scha-modal-sub" class="scha-subtitle"></div>
+            </div>
+            <button id="scha-modal-close" class="scha-x">×</button>
+        </div>
+
+        <div class="scha-bd">
+            <div id="scha-modal-error" class="hidden"></div>
+
+            <div class="scha-grid">
+                <div>
+                    <label>Ca làm</label>
+                    <select id="scha-shift"></select>
+                </div>
+                <div>
+                    <label>Ghi chú</label>
+                    <input id="scha-note" placeholder="Ví dụ: đổi ca..." />
+                </div>
+            </div>
+        </div>
+
+        <div class="scha-ft">
+            <button id="scha-del" class="btn btn-danger">Xóa lịch</button>
+            <button id="scha-cancel" class="btn">Hủy</button>
+            <button id="scha-save" class="btn btn-primary">Lưu</button>
+        </div>
+    </div>
+</div>
+

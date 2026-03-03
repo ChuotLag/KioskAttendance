@@ -1,0 +1,207 @@
+﻿
+
+<!DOCTYPE html>
+<html lang="vi" class="h-full">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ứng Dụng Chấm Công</title>
+
+    <!-- Fonts (nếu muốn offline 100% thì tải font về local và bỏ link này) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+    <!-- Material Symbols (nếu muốn offline 100% thì thay bằng svg/icon local) -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+
+    <!-- Tailwind compiled (offline) -->
+    <link rel="stylesheet" href="assets/css/app.css">
+
+<!--    <style>
+        /* Đảm bảo Material Symbols hiển thị đúng weight/size */
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>-->
+</head>
+
+<body class="h-full bg-background-light dark:bg-background-dark font-display text-[#0d1a1b] dark:text-white transition-colors duration-200 overflow-x-hidden">
+    <div class="flex h-screen overflow-hidden">
+
+        <!-- SideNavBar -->
+
+        <aside class="w-64 flex flex-col border-r border-[#cfe5e7] dark:border-[#2a3c3e] bg-white dark:bg-[#152a2c] z-10">
+            <div class="p-6">
+                <div class="flex items-center gap-3 mb-8">
+                    <!-- <div class="size-8 bg-primary rounded flex items-center justify-center text-white">
+                     <span class="material-symbols-outlined">analytics</span>
+                 </div>-->
+                    <div>
+                        <h1 class="text-[#0d1a1b] dark:text-white text-base font-bold leading-none">Tùng Phát Coffee</h1>
+                        <!--<p class="text-[#4c939a] text-xs font-medium mt-1">Tùng Phát Coffee</p>-->
+                    </div>
+                </div>
+
+                <nav class="flex flex-col gap-1">
+                    <div class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-lg cursor-pointer transition-colors hover:bg-[#e7f2f3] dark:hover:bg-[#1a3538]"
+                         data-page="pages/dashboard.html" data-title="Dashboard">
+                        <span class="material-symbols-outlined text-[22px]">dashboard</span>
+                        <p class="text-sm font-semibold">Dashboard</p>
+                    </div>
+
+                    <div class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-lg cursor-pointer transition-colors hover:bg-[#e7f2f3] dark:hover:bg-[#1a3538]"
+                         data-page="pages/attendance_qr.html" data-title="Chấm công QR">
+                        <span class="material-symbols-outlined text-[22px] text-[#4c939a]">schedule</span>
+                        <p class="text-sm font-medium">Chấm công QR</p>
+                    </div>
+
+                    <div class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-lg cursor-pointer transition-colors hover:bg-[#e7f2f3] dark:hover:bg-[#1a3538]"
+                         data-page="pages/attendance.html" data-title="Chấm công">
+                        <span class="material-symbols-outlined text-[22px] text-[#4c939a]">schedule</span>
+                        <p class="text-sm font-medium">Chấm công</p>
+                    </div>
+
+
+                    <div class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-lg cursor-pointer transition-colors hover:bg-[#e7f2f3] dark:hover:bg-[#1a3538]"
+                         data-page="pages/scheduling_all.html" data-title="Lịch làm việc nhân viên">
+                        <span class="material-symbols-outlined text-[22px] text-[#4c939a]">group</span>
+                        <p class="text-sm font-medium">Lịch làm việc nhân viên</p>
+                    </div>
+
+                    <div class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-lg cursor-pointer transition-colors hover:bg-[#e7f2f3] dark:hover:bg-[#1a3538]"
+                         data-page="pages/employees.html" data-title="Quản lý nhân viên">
+                        <span class="material-symbols-outlined text-[22px] text-[#4c939a]">group</span>
+                        <p class="text-sm font-medium">Quản lý nhân viên</p>
+                    </div>
+                    <div class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-lg cursor-pointer transition-colors hover:bg-[#e7f2f3] dark:hover:bg-[#1a3538]"
+                         data-page="pages/pay_multipliers.html" data-title="Cài đặt nhân đôi lương">
+                        <span class="material-symbols-outlined text-[22px] text-[#4c939a]">calendar_month</span>
+                        <p class="text-sm font-medium">Cài đặt nhân đôi lương</p>
+                    </div>
+                    <div class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-lg cursor-pointer transition-colors hover:bg-[#e7f2f3] dark:hover:bg-[#1a3538]"
+                         data-page="pages/payroll.html" data-title="Bảng lương">
+                        <span class="material-symbols-outlined text-[22px] text-[#4c939a]">payments</span>
+                        <p class="text-sm font-medium">Bảng lương</p>
+                    </div>
+
+                    <div class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-lg cursor-pointer transition-colors hover:bg-[#e7f2f3] dark:hover:bg-[#1a3538]"
+                         data-page="pages/pin_settings.html" data-title="Đổi mã PIN">
+                        <span class="material-symbols-outlined text-[22px] text-[#4c939a]">lock_reset</span>
+                        <p class="text-sm font-medium">Đổi mã PIN</p>
+                    </div>
+
+                    <div class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-lg cursor-pointer transition-colors hover:bg-[#e7f2f3] dark:hover:bg-[#1a3538]"
+                         data-page="pages/settings_connection.html" data-title="Cài đặt kết nối">
+                        <span class="material-symbols-outlined text-[22px] text-[#4c939a]">settings</span>
+                        <p class="text-sm font-medium">Cài đặt kết nối</p>
+                    </div>
+
+                </nav>
+            </div>
+
+            <div class="mt-auto p-6">
+                <div class="bg-primary/10 dark:bg-primary/5 p-4 rounded-xl border border-primary/20">
+                    <p class="text-xs font-bold text-primary uppercase tracking-wider mb-1">Status Hệ thống</p>
+                    <p class="text-[11px] text-[#4c939a]">Phiên bản 1.1.0-stable</p>
+                    <div class="mt-3 h-1.5 w-full bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                        <div class="h-full bg-primary w-3/4"></div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="flex-1 flex flex-col min-w-0 overflow-hidden">
+            <!-- TopNavBar -->
+            <header class="flex items-center justify-between h-16 px-8 border-b border-[#cfe5e7] dark:border-[#2a3c3e] bg-white dark:bg-[#152a2c] shrink-0">
+                <div class="flex items-center gap-4 min-w-0">
+                    <h2 id="page-title" class="text-[#0d1a1b] dark:text-white text-lg font-bold tracking-tight truncate">Dashboard</h2>
+                    <!--<span class="px-2 py-0.5 bg-gray-100 dark:bg-gray-800 text-[#4c939a] text-[10px] font-bold rounded uppercase">Tùng Phát coffee</span>-->
+                </div>
+
+                <!--   <div class="text-[10px] text-[#4c939a] font-bold">
+                   LOCAL TIME: 02:45 PM
+               </div>-->
+                <!--<div class="flex items-center gap-6">
+                <div class="flex items-center gap-3 pr-6 border-r border-[#cfe5e7] dark:border-[#2a3c3e]">
+                    <div class="text-right">
+                        <p class="text-sm font-bold leading-none dark:text-white">Admin</p>
+                        <p class="text-xs text-[#4c939a] mt-1">Quản lý</p>
+                    </div>
+
+                    Đổi avatar về local để chạy offline
+                    <div class="size-10 rounded-full bg-cover bg-center border-2 border-primary/30"
+                         style="background-image: url('assets/imgs/avatar.png')"></div>
+                </div>
+                <button class="flex items-center justify-center rounded-lg h-9 px-4 bg-primary text-[#0d1a1b] text-xs font-bold transition-transform active:scale-95"
+                        type="button">
+                    Logout
+                </button>
+            </div>-->
+            </header>
+
+            <!-- Content Host -->
+            <div id="app-content" class="flex-1 min-w-0 overflow-y-auto overflow-x-hidden p-8"></div>
+
+            <!-- Bottom Status Bar -->
+            <!-- <footer class="h-8 px-6 border-t border-[#cfe5e7] dark:border-[#2a3c3e] bg-white dark:bg-[#152a2c] flex items-center justify-between shrink-0">
+             <div class="flex items-center gap-4">
+                 <div class="flex items-center gap-1.5">
+                     <div class="size-2 rounded-full bg-green-500 animate-pulse"></div>
+                     <span class="text-[10px] text-[#4c939a] font-medium uppercase tracking-widest">System Online</span>
+                 </div>
+                 <span class="text-[10px] text-[#cfe5e7] dark:text-[#2a3c3e]">|</span>
+                 <span class="text-[10px] text-[#4c939a] font-medium">Last Sync: 2 minutes ago</span>
+             </div>
+             <div class="text-[10px] text-[#4c939a] font-bold">
+                 LOCAL TIME: 02:45 PM
+             </div>
+         </footer>-->
+        </main>
+        <!-- PIN Modal (center) -->
+        <div id="pin-modal" class="fixed inset-0 z-[9999] hidden">
+            <!-- Backdrop -->
+            <div id="pin-backdrop" class="absolute inset-0 bg-black/40"></div>
+
+            <!-- Dialog -->
+            <div class="relative h-full w-full flex items-center justify-center p-4">
+                <div class="w-full max-w-xl rounded-2xl bg-white dark:bg-[#152a2c] border border-[#cfe5e7] dark:border-[#2a3c3e] shadow-xl">
+                    <div class="p-6 border-b border-[#cfe5e7] dark:border-[#2a3c3e]">
+                        <div class="flex items-start justify-between gap-4">
+                            <div>
+                                <h3 class="text-lg font-bold text-[#0d1a1b] dark:text-white">Nhập mã PIN</h3>
+                                <p id="pin-modal-subtitle" class="text-sm text-[#4c939a] mt-1">Mục này cần mã PIN của chủ quán.</p>
+                            </div>
+                            <button id="pin-close" type="button"
+                                    class="h-9 w-9 rounded-lg hover:bg-[#e7f2f3] dark:hover:bg-[#1a3538] flex items-center justify-center">
+                                <span class="material-symbols-outlined text-[20px]">close</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="p-6">
+                        <input id="pin-input" type="password" inputmode="numeric" autocomplete="one-time-code"
+                               class="w-full h-12 px-4 rounded-xl border border-[#cfe5e7] dark:border-[#2a3c3e] bg-white dark:bg-[#0f1f20] text-[#0d1a1b] dark:text-white outline-none focus:ring-2 focus:ring-primary"
+                               placeholder="Nhập PIN" />
+
+                        <p id="pin-error" class="hidden mt-3 text-sm text-red-600"></p>
+
+                        <div class="mt-6 flex items-center justify-end gap-3">
+                            <button id="pin-cancel" type="button"
+                                    class="h-10 px-4 rounded-lg border border-[#cfe5e7] dark:border-[#2a3c3e] hover:bg-[#e7f2f3] dark:hover:bg-[#1a3538] text-sm font-semibold">
+                                Hủy
+                            </button>
+                            <button id="pin-confirm" type="button"
+                                    class="h-10 px-5 rounded-lg bg-primary text-[#0d1a1b] text-sm font-bold active:scale-95 transition">
+                                Xác nhận
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+
+    <script src="assets/js/app.js"></script>
+</body>
+</html>

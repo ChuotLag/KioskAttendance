@@ -1,0 +1,58 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AssemblyName>Chấm Công Coffee</AssemblyName>
+    <RootNamespace>Cham_Cong</RootNamespace>
+    <ApplicationIcon>coffee_2.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.1.66" />
+    <PackageReference Include="ClosedXML" Version="0.104.2" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="6.1.3" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="10.0.2" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="10.0.2" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.2" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="10.0.2" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="10.0.2" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="10.0.2" />
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.3650.58" />
+    <PackageReference Include="QRCoder" Version="1.7.0" />
+    <PackageReference Include="Serilog" Version="4.3.0" />
+    <PackageReference Include="Serilog.Extensions.Logging" Version="10.0.0" />
+    <PackageReference Include="Serilog.Sinks.File" Version="7.0.0" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Content Include="www\**\*.*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Remove="www\pages\attendance_qr.html" />
+    <None Remove="www\pages\employees.html" />
+    <None Remove="www\pages\pin_settings.html" />
+    <None Remove="www\pages\scheduling_all.html" />
+    
+    <Content Include="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    
+    <Content Include="coffee_2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="$(NuGetPackageRoot)microsoft.web.webview2\**\Microsoft.Web.WebView2.Wpf.dll" />
+    <Content Remove="$(NuGetPackageRoot)microsoft.web.webview2\**\Microsoft.Web.WebView2.Wpf.dll" />
+    <Reference Remove="Microsoft.Web.WebView2.Wpf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="**\Microsoft.Web.WebView2.Wpf.dll" />
+    <None Remove="**\Microsoft.Web.WebView2.Wpf.dll" />
+  </ItemGroup>
+
+
+
+</Project>
